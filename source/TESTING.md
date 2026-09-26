@@ -10,6 +10,12 @@ Completed during creation:
 
 Scripted charge-all battles at the fixed 1/30-second simulation step ended naturally after approximately 179 seconds at Cannae, 271 seconds at Hastings, and 239 seconds at Austerlitz. These are test runs, not a prediction of every player's outcome.
 
-The bundled Playwright browser integration suite remains **unverified**: Chromium could not start in this execution environment. Browser layout, real GPU shader execution, and device frame rate have not been confirmed. The Canvas pictures used during development are renderer checks, not browser screenshots. The passing DOM harness does not replace browser validation.
+The bundled Playwright browser integration suite remains **unverified**: Chromium could not start in the original local execution environment. The Canvas pictures used during development were renderer checks, not browser screenshots. The passing DOM harness does not replace browser validation.
+
+## GitHub Pages live browser verification — 2026-09-26
+
+The published game at https://soldoutbudokan.github.io/Wargaming/ was manually exercised in a separate Chromium browser after GitHub Pages reported a successful deployment. The root page loads with its inline styles and scripts. Verified the 100,000-soldier setting, formation selection, map movement orders, charge orders, battle progression with casualties and changing morale/fatigue, tactical pause, troop inspection and camera fit, recorded replay and return to battle, and all three scenario loads. Desktop layout and battlefield rendering were inspected in actual browser screenshots.
+
+This browser used the Canvas fallback. Its displayed frame-rate counter was approximately 59–60 FPS during the tested Cannae battle, which is an observation for this environment, not a performance guarantee. Real GPU shader execution, other browsers, mobile layout, and performance on player devices remain unverified. All four local regression suites passed again against the staged Pages source. This manual smoke test does not imply that the separate Playwright suite ran.
 
 The simulation is intentionally simplified and does not establish historical fidelity or independently simulated soldier behavior.
