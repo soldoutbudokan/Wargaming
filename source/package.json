@@ -1,0 +1,19 @@
+{
+  "name": "field-command",
+  "version": "0.2.0",
+  "private": true,
+  "description": "Historical battle sandbox with terrain, morale, fatigue and up to 100,000 rendered soldiers",
+  "scripts": {
+    "test": "node test-terrain.cjs && node test-engine.cjs && node test-renderer.cjs && node test-app.cjs",
+    "test:browser": "node test-ui.cjs",
+    "build": "python3 build.py"
+  },
+  "engines": {
+    "node": ">=24"
+  },
+  "devDependencies": {
+    "jsdom": "30.1.1",
+    "playwright": "1.62.1",
+    "@napi-rs/canvas": "0.1.100"
+  }
+}

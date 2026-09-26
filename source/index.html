@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#202a27">
+  <title>Field Command — A playable history</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="Field Command home"><span class="brand-mark">F<span>C</span></span><span>FIELD <b>COMMAND</b><small>A PLAYABLE HISTORY</small></span></a>
+    <nav aria-label="Main navigation"><button class="nav-active" id="battle-tab">Battlefield</button><button id="guide-top">Field guide <span>↗</span></button></nav>
+    <div class="edition"><span class="live-dot"></span>HISTORICAL SANDBOX <b>02</b></div>
+  </header>
+  <main class="app">
+    <aside class="sidebar">
+      <div class="sidebar-top"><span class="eyebrow">THE BATTLE AT HAND</span><button class="icon-btn mobile-close" id="close-sidebar" aria-label="Close battle settings">×</button></div>
+      <div class="scenario-heading"><span class="era" id="era">216 BCE · ANCIENT WORLD</span><h1 id="battle-name">Cannae</h1><p id="location">Apulia, southern Italy</p></div>
+      <button class="scenario-picker" id="scenario-picker"><span class="icon" data-icon="map"></span>Choose a different battle<span class="arrow">↗</span></button>
+      <div class="rule"></div>
+      <div class="commander"><span class="eyebrow">YOUR COMMAND</span><h2 id="commander">Hannibal Barca</h2><p><i class="army-dot friendly"></i><span id="army-name">Carthage</span></p></div>
+      <div class="mission"><span class="eyebrow">THE PLAN</span><p id="briefing">Hold the center. Send your cavalry around the flanks and close the circle.</p><div class="objective"><span class="icon" data-icon="flag"></span><span>Break the opposing army's morale.</span></div></div>
+      <div class="scale-setting"><div class="setting-label"><label for="army-size">Soldiers on the field</label><span id="size-value">10,000</span></div><select id="army-size"><option value="1000">1,000 · Small skirmish</option><option value="10000" selected>10,000 · Standard battle</option><option value="25000">25,000 · Grand battle</option><option value="50000">50,000 · Massive battle</option><option value="100000">100,000 · Epic battle</option></select><p>Choose your scale. Individual soldiers. Formation-level command.</p></div>
+      <div class="sidebar-actions"><button class="primary" id="play-button"><span class="icon" data-icon="play"></span><span id="play-label">Begin battle</span><kbd>Space</kbd></button><button class="restart" id="restart"><span class="icon" data-icon="restart"></span>Reset battlefield</button></div>
+      <div class="history-note"><span class="eyebrow">A MOMENT IN HISTORY</span><p id="history">Hannibal faced a larger Roman army. His double envelopment became one of history's best-known encirclements.</p><button id="history-button">Read the battle notes <span>↗</span></button></div>
+      <div class="sidebar-foot">HISTORICALLY INSPIRED · OUTCOME UNWRITTEN</div>
+    </aside>
+    <section class="battle-area" aria-label="Battlefield and command controls">
+      <div class="battle-toolbar"><div class="battle-state"><button class="icon-btn mobile-menu" id="open-sidebar" aria-label="Open battle settings">☰</button><span id="phase-dot" class="phase-dot"></span><strong id="phase-label">Deployment</strong><span class="separator">/</span><span id="battle-clock">00:00</span></div><div class="time-controls"><span class="speed-label">SPEED</span><button class="speed active" data-speed="1" aria-pressed="true">1×</button><button class="speed" data-speed="2" aria-pressed="false">2×</button><button class="speed" data-speed="4" aria-pressed="false">4×</button><span class="toolbar-divider"></span><button id="replay-button" class="replay-button" disabled><span class="icon" data-icon="replay"></span>Replay</button></div></div>
+      <div class="map-container" id="map-container" tabindex="0" role="application" aria-label="Tactical battlefield. Select formations using the cards below, then click on the map to move or on an enemy to attack. Space pauses. A selects all. H holds. C charges. Arrow keys pan.">
+        <div class="army-score" aria-label="Army strengths"><div><span><i class="army-dot friendly"></i><span id="friendly-label">CARTHAGE</span></span><strong id="friendly-count">4,000</strong></div><div class="balance-track"><span id="balance-fill"></span></div><div><span><i class="army-dot enemy"></i><span id="enemy-label">ROME</span></span><strong id="enemy-count">6,000</strong></div></div>
+        <div class="map-location"><span id="map-kicker">THE SECOND PUNIC WAR</span><strong id="map-title">The fields of Cannae</strong></div>
+        <div class="map-hint" id="map-hint"><span class="hint-number">01</span><span>Select a formation below.<br><b>Click the field to move. Click an enemy to attack.</b></span><button id="dismiss-hint" aria-label="Dismiss tip">×</button></div>
+        <div class="map-tools"><button id="zoom-in" title="Zoom in" aria-label="Zoom in">+</button><button id="zoom-out" title="Zoom out" aria-label="Zoom out">−</button><button id="reset-view" title="Fit battlefield" aria-label="Fit battlefield"><span class="icon" data-icon="fit"></span></button></div>
+        <div class="map-legend"><span><i class="legend-shape square"></i>Your army</span><span><i class="legend-shape diamond"></i>Opposition</span><span class="terrain-note">TERRAIN AFFECTS BATTLE</span></div>
+        <div class="performance"><span id="renderer-label">GPU</span><span id="fps">— FPS</span></div>
+        <div class="toast" id="toast" role="status" aria-live="polite"></div>
+        <div class="result-card" id="result-card" hidden><span class="eyebrow">THE FIELD FALLS SILENT</span><h2 id="result-title">Victory</h2><p id="result-description"></p><div><button class="primary" id="result-replay">Watch replay</button><button class="secondary" id="result-reset">Fight again</button></div></div>
+      </div>
+      <div class="replay-tray" id="replay-tray" hidden><button id="replay-play" aria-label="Play recording"><span class="icon" data-icon="play"></span></button><span>RECORDING</span><label for="replay-scrub" class="sr-only">Replay position</label><input id="replay-scrub" type="range" min="0" max="0" value="0"><time id="replay-time">00:00</time><button id="exit-replay">Return to battle ↗</button></div>
+      <div class="command-dock">
+        <div class="dock-header"><div><span class="eyebrow">YOUR FORMATIONS</span><span id="selection-info">Select a formation to give an order</span></div><button id="select-all">Select all <kbd>A</kbd></button></div>
+        <div class="condition-panel" id="condition-panel" hidden aria-label="Selected formation condition">
+          <div class="condition-metric"><span>Morale <b id="condition-morale">100%</b></span><div class="condition-track"><i id="condition-morale-bar"></i></div></div>
+          <div class="condition-metric"><span>Cohesion <b id="condition-cohesion">100%</b></span><div class="condition-track"><i id="condition-cohesion-bar"></i></div></div>
+          <div class="condition-metric fatigue"><span>Fatigue <b id="condition-fatigue">0%</b></span><div class="condition-track"><i id="condition-fatigue-bar"></i></div></div>
+          <div class="condition-detail"><strong id="condition-ammo">Melee weapons</strong><span id="condition-reload">Ready</span></div>
+          <div class="condition-detail"><strong id="condition-terrain">Open ground</strong><span id="condition-cover">No cover</span></div>
+          <button id="inspect-selection"><span class="icon" data-icon="fit"></span>View troops</button>
+          <p id="condition-advice">Keep your formations rested and protect their flanks.</p>
+        </div>
+        <div class="unit-roster" id="unit-roster" aria-label="Select your formations"></div>
+        <div class="command-row"><div class="orders"><button id="move-order" title="Click the field to move selected formations"><span class="icon" data-icon="move"></span>Move</button><button id="hold-order"><span class="icon" data-icon="shield"></span>Hold <kbd>H</kbd></button><button id="charge-order"><span class="icon" data-icon="swords"></span>Charge <kbd>C</kbd></button><span class="command-divider"></span><label for="formation-select">Formation</label><select id="formation-select" aria-label="Change formation"><option value="line">Line</option><option value="column">Column</option><option value="square">Square</option></select></div><button class="help-button" id="help-button"><span>?</span> Controls</button></div>
+      </div>
+    </section>
+  </main>
+  <dialog id="scenario-dialog"><div class="dialog-top"><span class="eyebrow">THE HISTORICAL ATLAS</span><button class="dialog-close" aria-label="Close battle selector">×</button></div><h2>Choose your battlefield.</h2><p class="dialog-intro">Three turning points. A different outcome is in your hands.</p><div class="scenario-list" id="scenario-list"></div><p class="fine-print">Scenarios use scaled armies and simplified terrain. They are playable interpretations, not exact historical reconstructions. Choosing a battle starts a fresh recording.</p></dialog>
+  <dialog id="guide-dialog"><div class="dialog-top"><span class="eyebrow">THE FIELD GUIDE</span><button class="dialog-close" aria-label="Close field guide">×</button></div><h2>Less to learn.<br>More to command.</h2><p class="dialog-intro">You command the formations in teal. Make the opposing army retreat to win.</p><div class="guide-grid"><article><b>01</b><h3>Select your soldiers</h3><p>Click a formation on the map or its card below. Drag a box to select several. Shift-click adds to your selection.</p></article><article><b>02</b><h3>Give one clear order</h3><p>Click open ground to move. Click an enemy formation to attack. Use Hold to defend or Charge to close quickly.</p></article><article><b>03</b><h3>Take your time</h3><p>Press Space to pause and issue orders. Rest tired troops. Hills and woodland affect combat; rivers require a ford. Watch ammunition and keep firing lanes clear.</p></article></div><div class="shortcut-grid"><span><kbd>A</kbd> Select all</span><span><kbd>H</kbd> Hold position</span><span><kbd>C</kbd> Charge</span><span><kbd>Esc</kbd> Deselect</span><span><kbd>Scroll</kbd> Zoom</span><span><kbd>↑ ↓ ← →</kbd> Pan</span></div><p class="fine-print">Pan by dragging with the right or middle mouse button. Touch: tap to select and command; drag empty ground to pan. Replay records your battle and lets you scrub through it. Up to 100,000 individual soldiers are drawn; combat and movement are calculated by formation. Select a formation to inspect fatigue, cohesion, ammunition, and cover. Use View troops for a close look. Performance depends on your device. After ten simulated minutes, remaining combat strength decides the result.</p><button class="primary dialog-close">Back to the field</button></dialog>
+  <dialog id="history-dialog"><div class="dialog-top"><span class="eyebrow">BATTLE NOTES</span><button class="dialog-close" aria-label="Close battle notes">×</button></div><h2 id="notes-title">Cannae</h2><p id="notes-date" class="dialog-intro"></p><p id="notes-context" class="notes-body"></p><h3>The tactical idea</h3><p id="notes-tactic" class="notes-body"></p><p class="fine-print">The setup takes inspiration from the historical battle. Army sizes, positions, terrain, combat rates, and unit types are adjusted for this prototype.</p><a id="notes-source" target="_blank" rel="noopener">Historical source ↗</a></dialog>
+  <script src="scenarios.js"></script>
+  <script src="terrain.js"></script>
+  <script src="engine.js"></script>
+  <script src="renderer.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

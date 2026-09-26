@@ -1,0 +1,2526 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#202a27">
+  <title>Field Command — A playable history</title>
+  <style>
+:root{--ink:#23312d;--muted:#78827a;--paper:#f4f1e9;--line:#dcded3;--teal:#3b796c;--gold:#d9b879;--enemy:#a45343;--dark:#202c27;--side:#f6f4ee;font-family:Arial,Helvetica,sans-serif;color:var(--ink);background:var(--dark);font-synthesis:none}*{box-sizing:border-box}body{margin:0;overflow:hidden}button,select,input{font:inherit}button,a,select,input{-webkit-tap-highlight-color:transparent}button{cursor:pointer}button{color:inherit}button:disabled{cursor:default;opacity:.4}button:focus-visible,a:focus-visible,select:focus-visible,input:focus-visible{outline:3px solid #a78243;outline-offset:3px}button{border:0;background:none}button:hover:not(:disabled){filter:brightness(.94)}button:active:not(:disabled){transform:translateY(1px)}a{color:inherit}h1,h2,h3,p{margin:0}.icon{display:inline-flex;vertical-align:middle;flex-shrink:0}.icon svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}kbd{font:10px Arial,sans-serif;border:1px solid currentColor;opacity:.55;border-radius:3px;padding:3px 5px;white-space:nowrap}.topbar{height:72px;padding:0 30px;display:flex;align-items:center;justify-content:space-between;background:var(--dark);color:#f1f2e9;border-bottom:1px solid #ffffff10}.brand{display:flex;gap:12px;align-items:center;text-decoration:none;font-size:13px;letter-spacing:2px;font-weight:400}.brand b{font-weight:700}.brand small{font-size:8px;letter-spacing:3.7px;display:block;color:#b0b8aa;margin-top:6px}.brand-mark{position:relative;display:inline-block;border:1px solid #b4ab80;width:34px;height:37px;color:var(--gold);font:25px Georgia,serif;padding-left:4px;line-height:31px;letter-spacing:-6px}.brand-mark span{position:relative;top:7px;font-size:22px}.topbar nav{display:flex;align-self:stretch;gap:32px;margin-left:20px}.topbar nav button{color:#aeb9b0;font-size:12px;position:relative;padding:0 2px}.topbar nav button.nav-active{color:#eeeede}.nav-active:after{position:absolute;content:'';height:2px;bottom:0;left:0;right:0;background:var(--gold)}.topbar nav span{margin-left:12px;color:#bbae85}.edition{display:flex;align-items:center;gap:8px;color:#b5beb2;font-size:8px;letter-spacing:1.6px}.edition b{font-size:10px;border:1px solid #5a6256;padding:5px 7px;margin-left:4px}.live-dot{height:5px;width:5px;border-radius:100%;background:#a9bc86}.app{display:flex;height:calc(100dvh - 72px);min-height:560px}.sidebar{width:274px;flex-shrink:0;padding:28px 24px 0;background:var(--side);border-right:1px solid #d0d4c6;display:flex;flex-direction:column;overflow:auto;scrollbar-width:thin;z-index:5}.eyebrow{font-size:9px;letter-spacing:1.9px;font-weight:700;color:#808779}.sidebar-top{display:flex;justify-content:space-between;align-items:center}.scenario-heading{padding:27px 0 23px}.era{font-size:9px;letter-spacing:1.5px;color:#8b7858}.scenario-heading h1{font:44px Georgia,'Times New Roman',serif;letter-spacing:-1.8px;margin:6px 0 7px;line-height:1.1}.scenario-heading p{font-size:11px;color:#7a8278}.scenario-picker{display:flex;gap:9px;align-items:center;padding:12px 0;width:100%;font-size:11px;font-weight:600;text-align:left;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}.scenario-picker .icon{color:#858b7d}.arrow{margin-left:auto}.rule{height:0}.commander{padding-top:24px}.commander h2{font:22px Georgia,serif;margin-top:10px}.commander p{display:flex;align-items:center;gap:7px;color:#707b70;font-size:11px;margin-top:8px}.army-dot{display:inline-block;width:6px;height:6px;border-radius:50%;flex-shrink:0}.friendly{background:var(--teal)}.enemy{background:var(--enemy)}.mission{margin-top:25px}.mission>p{font-size:12px;line-height:1.75;margin-top:9px;color:#536056}.objective{display:flex;gap:9px;margin-top:14px;font-size:10px;color:#5a654f;line-height:1.7}.objective .icon{margin-top:1px}.objective .icon svg{width:13px;height:13px}.scale-setting{margin-top:25px;padding-top:21px;border-top:1px solid var(--line)}.setting-label{display:flex;align-items:center;justify-content:space-between;font-size:10px}.setting-label label{font-weight:600}.setting-label span{font-variant-numeric:tabular-nums;color:#6e775c}.scale-setting select{margin-top:11px;width:100%;background:#eceee4;border:1px solid #d8dcce;border-radius:4px;padding:10px 9px;color:#344335;font-size:11px;cursor:pointer}.scale-setting p{margin-top:8px;font-size:9px;color:#89907e;line-height:1.5}.sidebar-actions{margin-top:23px}.primary{background:var(--dark);color:#f5f0df;border:1px solid var(--dark);border-radius:4px;font-size:12px;font-weight:600;padding:13px 17px;display:inline-flex;align-items:center;justify-content:center;gap:10px}.sidebar-actions .primary{width:100%;justify-content:flex-start}.sidebar-actions kbd{margin-left:auto}.restart{display:flex;justify-content:center;align-items:center;gap:7px;font-size:10px;width:100%;padding:13px 0;color:#7d8677}.restart .icon svg{width:12px;height:12px}.history-note{border-top:1px solid var(--line);margin-top:15px;padding-top:22px;padding-bottom:25px}.history-note p{font:italic 12px/1.75 Georgia,serif;color:#7d816f;margin-top:10px}.history-note button{font-size:9px;color:#687259;margin-top:13px;padding:0}.history-note button span{padding-left:15px}.sidebar-foot{margin-top:auto;font-size:7px;letter-spacing:1.15px;color:#999d8e;padding:18px 0;border-top:1px solid var(--line);white-space:nowrap}.battle-area{flex:1;min-width:0;display:flex;flex-direction:column;background:#e6e7da}.battle-toolbar{height:52px;flex-shrink:0;background:#f1f1e9;border-bottom:1px solid #d5d9ca;display:flex;align-items:center;justify-content:space-between;padding:0 25px;font-size:11px}.battle-state{display:flex;gap:10px;align-items:center}.battle-state strong{font-weight:500}.phase-dot{width:5px;height:5px;border-radius:50%;background:#a28b55}.phase-dot.running{background:var(--teal)}.separator{color:#c0c5b6;margin:0 3px}#battle-clock{font-size:11px;color:#7d8676;font-variant-numeric:tabular-nums}.time-controls{display:flex;align-items:center;gap:4px}.speed-label{font-size:8px;letter-spacing:1.4px;color:#919686;margin-right:8px}.speed{font-size:10px;color:#7e8776;padding:6px 8px;border-radius:3px}.speed.active{background:#e1e5d8;color:#354930;font-weight:bold}.toolbar-divider{height:17px;width:1px;background:#d3d9c8;margin:0 12px}.replay-button{display:flex;align-items:center;gap:6px;font-size:10px}.replay-button .icon svg{height:13px;width:13px}.map-container{position:relative;flex:1;min-height:220px;overflow:hidden;touch-action:none;outline:none;background:#cdd0ae;cursor:crosshair}.map-container>canvas{position:absolute;inset:0;pointer-events:none}.army-score{position:absolute;z-index:2;left:50%;top:20px;transform:translateX(-50%);background:#f7f5eae8;border:1px solid #f6f5e950;border-radius:5px;display:flex;align-items:center;gap:17px;padding:13px 20px;box-shadow:0 3px 20px #28331d09;pointer-events:none}.army-score>div:not(.balance-track){display:flex;align-items:center;gap:14px;white-space:nowrap}.army-score>div>span{display:flex;gap:6px;align-items:center;font-size:8px;letter-spacing:1.1px;color:#66715e}.army-score strong{font:19px Georgia,serif;min-width:44px;font-variant-numeric:tabular-nums}.balance-track{width:65px;height:3px;background:var(--enemy)}.balance-track span{display:block;width:40%;height:100%;background:var(--teal)}.map-location{position:absolute;z-index:2;left:25px;top:22px;pointer-events:none}.map-location span{display:block;font-size:7px;letter-spacing:1.8px;color:#697351}.map-location strong{font:italic 16px Georgia,serif;display:block;margin-top:7px;color:#596644}.map-hint{position:absolute;z-index:2;bottom:50px;left:24px;display:flex;align-items:center;gap:12px;border-radius:5px;border:1px solid #f2f0df90;background:#f5f3e9eb;padding:13px 11px 13px 14px;box-shadow:0 3px 10px #3842260b;font-size:10px;line-height:1.7;color:#526347}.hint-number{border:1px solid #bfcaac;border-radius:50%;width:26px;height:26px;display:flex;align-items:center;justify-content:center;color:#849272;font:italic 12px Georgia}.map-hint b{font-weight:400;font-size:9px;color:#879076}.map-hint button{align-self:flex-start;color:#929b82;font-size:17px;line-height:1;padding:0 0 0 8px}.map-tools{position:absolute;right:20px;bottom:50px;z-index:2;display:flex;flex-direction:column;gap:1px;border:1px solid #c5c9ae;border-radius:4px;overflow:hidden;box-shadow:0 3px 10px #28331d08}.map-tools button{height:32px;width:33px;background:#f1f1e4dd;font-size:20px;display:flex;align-items:center;justify-content:center;color:#5b6b4d}.map-tools button+button{border-top:1px solid #d0d5bc}.map-tools .icon svg{height:14px;width:14px}.map-legend{position:absolute;z-index:2;bottom:17px;left:25px;display:flex;gap:17px;align-items:center;pointer-events:none}.map-legend>span{display:flex;gap:6px;align-items:center;font-size:8px;color:#65734e}.legend-shape{width:5px;height:5px;background:var(--teal)}.legend-shape.diamond{background:var(--enemy);transform:rotate(45deg)}.map-legend .terrain-note{font-size:6px;letter-spacing:1.2px;border-left:1px solid #aab594;padding-left:15px;color:#7d8868}.performance{position:absolute;right:20px;bottom:17px;z-index:2;font-size:7px;letter-spacing:.4px;color:#70815d;display:flex;gap:8px;pointer-events:none}.toast{position:absolute;z-index:7;left:50%;bottom:28px;transform:translate(-50%,8px);border-radius:4px;background:#23372eef;color:#f5f5e8;padding:12px 18px;font-size:11px;opacity:0;transition:opacity .15s,transform .15s;pointer-events:none;max-width:80%;white-space:nowrap}.toast.visible{opacity:1;transform:translate(-50%,0)}.command-dock{flex-shrink:0;background:#f3f3eb;border-top:1px solid #d0d7c7;padding:17px 23px 0}.dock-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:13px;gap:10px}.dock-header>div{display:flex;align-items:center;gap:20px}.dock-header .eyebrow{font-size:8px;letter-spacing:1.6px;color:#66765c}#selection-info{font-size:10px;color:#8d9782}.dock-header button{font-size:10px;color:#536b4b;white-space:nowrap}.dock-header kbd{margin-left:5px;font-size:8px;padding:2px 4px}.unit-roster{display:flex;gap:8px;overflow-x:auto;padding-bottom:8px;scrollbar-width:thin;scrollbar-color:#bac3ad transparent}.unit-card{width:128px;min-width:128px;position:relative;display:flex;flex-direction:column;border:1px solid #d6ddcb;border-radius:4px;background:#e9ede2;min-height:96px;padding:10px;text-align:left;transition:background .15s,border-color .15s}.unit-card.selected{border-color:#557c65;background:#dce7d8;box-shadow:inset 0 0 0 1px #557c65}.unit-card.routing{opacity:.55}.unit-card.defeated{opacity:.35}.unit-top{display:flex;justify-content:space-between;align-items:center}.unit-symbol{color:#6c825e}.unit-symbol svg{height:19px;width:19px;fill:none;stroke:currentColor;stroke-width:1.3;stroke-linecap:round;stroke-linejoin:round}.unit-count{font:15px Georgia,serif;color:#43583b;font-variant-numeric:tabular-nums}.unit-name{font-size:9px;font-weight:600;color:#4f6345;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%;margin:9px 0 4px}.unit-status{font-size:7px;color:#8b967f;text-transform:uppercase;letter-spacing:.75px}.morale-track{height:2px;background:#d0d9c4;margin-top:8px;width:100%}.morale-track span{display:block;height:2px;background:#879c72}.unit-card.selected .morale-track span{background:#567f5a}.command-row{display:flex;justify-content:space-between;align-items:center;min-height:48px;border-top:1px solid #dfe4d6;margin-top:4px;gap:12px}.orders{display:flex;align-items:center;gap:7px}.orders>button{font-size:10px;display:flex;gap:6px;align-items:center;color:#637859;padding:7px 9px}.orders>button:first-child{padding-left:0}.orders .icon svg{width:13px;height:13px}.orders kbd{font-size:7px;padding:2px 3px;margin-left:2px}.command-divider{height:16px;width:1px;background:#d4dccb;margin:0 8px}.orders label{font-size:9px;color:#8c9780}.orders select{border:0;background:#e6ebdf;border-radius:3px;font-size:9px;color:#536e48;padding:6px 20px 6px 8px;cursor:pointer}.help-button{display:flex;align-items:center;gap:6px;font-size:9px;color:#7a8b6c}.help-button>span{display:flex;align-items:center;justify-content:center;border:1px solid #a1af90;border-radius:50%;width:14px;height:14px;font-size:9px}.replay-tray{align-items:center;gap:12px;padding:12px 23px;background:#e3e7d9;border-top:1px solid #c7d0bc;font-size:9px;flex-shrink:0}.replay-tray:not([hidden]){display:flex}.replay-tray>span{font-size:8px;letter-spacing:1.7px}.replay-tray input{flex:1;accent-color:var(--teal);min-width:20px}.replay-tray time{font-variant-numeric:tabular-nums;font-size:10px}.replay-tray #exit-replay{font-size:9px;white-space:nowrap}.result-card{position:absolute;z-index:5;left:50%;top:50%;transform:translate(-50%,-50%);width:360px;max-width:90%;background:#f7f5ea;box-shadow:0 20px 100px #22352135;border:1px solid #b6c5a8;border-radius:6px;text-align:center;padding:34px}.result-card h2{font:44px Georgia,serif;margin:15px 0}.result-card p{font-size:12px;line-height:1.8;color:#6f7e62}.result-card>div{display:flex;justify-content:center;gap:10px;margin-top:22px}.result-card button{font-size:10px;white-space:nowrap}.secondary{border:1px solid #b7c3ac;padding:11px;border-radius:4px}.mobile-close,.mobile-menu{display:none}dialog{border:1px solid #c6cbb9;border-radius:7px;background:#f5f3eb;color:var(--ink);padding:32px;max-width:740px;width:calc(100% - 36px);max-height:calc(100dvh - 48px);box-shadow:0 30px 100px #12281c55;overflow:auto}dialog::backdrop{background:#172b2390;backdrop-filter:blur(4px)}.dialog-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}.dialog-close{font-size:24px;color:#7e8b74}.dialog-close.primary{font-size:12px;color:#fff;margin-top:24px}.dialog-top button{padding:0;line-height:1}dialog h2{font:38px/1.14 Georgia,serif;letter-spacing:-1px}dialog h3{font:18px Georgia,serif}.dialog-intro{font-size:12px;line-height:1.8;color:#7b8770;margin:15px 0 25px}.scenario-list{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.scenario-option{text-align:left;background:#e7eadd;border:1px solid #cdd4c0;border-radius:5px;overflow:hidden;padding:0;display:flex;flex-direction:column}.scenario-option.active{border-color:var(--teal)}.scenario-art{height:100px;width:100%;position:relative;overflow:hidden;background:#c3cba9;display:flex;align-items:center;justify-content:center}.scenario-art:before,.scenario-art:after{content:'';position:absolute;width:90px;height:170px;border-radius:50%;border:1px solid #86956970;transform:rotate(45deg)}.scenario-art:after{width:150px;height:230px}.scenario-art span{font:italic 50px Georgia,serif;z-index:1;color:#6c7e5660}.scenario-option:nth-child(2) .scenario-art{background:#c9c4a4}.scenario-option:nth-child(3) .scenario-art{background:#cbd2c9}.scenario-copy{padding:18px 14px;flex:1;display:flex;flex-direction:column}.scenario-copy small{font-size:8px;letter-spacing:1px;color:#879071}.scenario-copy h3{font:26px Georgia,serif;margin:8px 0}.scenario-copy p{font-size:10px;line-height:1.7;color:#7b866a}.scenario-copy>span{margin-top:18px;font-size:9px;color:#4b6851}.fine-print{font-size:10px;line-height:1.8;color:#8a917d;margin-top:24px}.guide-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:25px;margin:28px 0}.guide-grid article>b{font:italic 24px Georgia,serif;color:#99a487}.guide-grid h3{margin:13px 0 9px;font-size:17px}.guide-grid p{font-size:11px;line-height:1.8;color:#7a866d}.shortcut-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;border-top:1px solid #d5dbca;border-bottom:1px solid #d5dbca;padding:22px 0}.shortcut-grid span{font-size:10px;display:flex;align-items:center;gap:8px;color:#6e7a61}.shortcut-grid kbd{font-size:9px}.notes-body{font:15px/1.85 Georgia,serif;color:#69785b;margin:20px 0}#notes-source{font-size:11px;display:inline-block;margin-top:20px}.sr-only{position:absolute;left:-10000px;width:1px;height:1px;overflow:hidden}[hidden]{display:none!important}
+@media(min-width:1600px){.sidebar{width:300px;padding-left:30px;padding-right:30px}.topbar{height:78px}.app{height:calc(100dvh - 78px)}.scenario-heading{padding-top:36px;padding-bottom:30px}.mission{margin-top:32px}.scale-setting{margin-top:32px}.unit-card{min-width:142px}.map-location{left:30px}}
+@media(max-height:860px){.sidebar{padding-top:22px}.scenario-heading{padding-top:22px;padding-bottom:20px}.commander{padding-top:20px}.mission{margin-top:19px}.scale-setting{margin-top:20px;padding-top:18px}.sidebar-actions{margin-top:18px}.history-note{padding-top:18px;padding-bottom:20px}.sidebar-foot{padding:14px 0}}
+@media(max-height:760px){.history-note{display:none}.sidebar-foot{margin-top:auto}.scenario-heading h1{font-size:38px}.command-dock{padding-top:12px}.unit-card{min-height:87px;padding:8px 10px}.unit-name{margin-top:7px}.command-row{min-height:41px}.dock-header{margin-bottom:10px}}
+@media(max-width:1200px){.sidebar{width:246px;padding-left:20px;padding-right:20px}.map-location{display:none}.army-score{top:17px}.dock-header>div{gap:12px}#selection-info{font-size:9px}.topbar{padding:0 23px}.unit-card{min-width:118px;width:118px}.orders{gap:1px}.orders>button{padding:7px}.orders kbd{display:none}}
+@media(max-width:900px){.edition{display:none}.sidebar{position:fixed;left:0;top:64px;bottom:0;width:274px;transform:translateX(-100%);transition:transform .2s;box-shadow:15px 0 50px #1a302533}.sidebar.open{transform:translateX(0)}.mobile-close,.mobile-menu{display:block}.mobile-close{padding:0;font-size:23px;color:#849075}.mobile-menu{font-size:15px;margin-right:5px}.topbar{height:64px}.app{height:calc(100dvh - 64px);min-height:500px}.map-location{display:block}.topbar nav{gap:20px}.battle-toolbar{padding:0 18px}.command-dock{padding-left:18px;padding-right:18px}.topbar .brand{font-size:11px}.topbar .brand small{font-size:7px;letter-spacing:3px}.army-score{gap:12px;padding:11px 16px}.army-score>div:not(.balance-track){gap:10px}.balance-track{width:40px}.map-location{display:none}}
+@media(max-width:600px){.topbar{padding:0 16px;height:59px}.topbar nav{gap:0}.topbar nav #battle-tab{display:none}.topbar nav button{font-size:10px}.brand small{display:none!important}.brand-mark{width:30px;height:31px;font-size:23px;line-height:27px}.brand-mark span{font-size:20px;top:5px}.app{height:calc(100dvh - 59px);min-height:540px}.sidebar{top:59px}.battle-toolbar{height:45px;padding:0 12px}.battle-state{gap:6px;font-size:10px}.time-controls{gap:0}.speed-label{display:none}.toolbar-divider{margin:0 6px}.replay-button{font-size:9px}.replay-button .icon{display:none}.speed{padding:6px}.army-score{top:12px;gap:10px;padding:10px 12px;max-width:calc(100% - 30px);width:355px;justify-content:space-between}.army-score>div:not(.balance-track){gap:8px}.army-score>div>span{font-size:7px;letter-spacing:.6px}.army-score strong{font-size:16px;min-width:35px}.balance-track{width:25px;min-width:20px}.map-hint{left:12px;bottom:43px;font-size:9px;padding:9px;gap:8px;max-width:calc(100% - 70px)}.map-hint b{font-size:8px}.hint-number{display:none}.map-tools{right:12px;bottom:43px}.map-tools button{height:28px;width:28px}.map-legend{left:12px;bottom:15px;gap:12px}.map-legend>span{font-size:7px}.map-legend .terrain-note{display:none}.performance{right:12px;bottom:15px;font-size:6px}.command-dock{padding:12px 12px 0}.dock-header{gap:5px}.dock-header>div{display:block}.dock-header .eyebrow{font-size:7px}#selection-info{display:block;font-size:8px;margin-top:5px}.dock-header button{font-size:9px}.unit-card{min-width:106px;width:106px;min-height:89px;padding:8px}.unit-count{font-size:14px}.unit-name{font-size:8px}.unit-status{font-size:6px}.unit-symbol svg{height:17px;width:17px}.command-row{min-height:46px;gap:3px}.orders>button{font-size:9px;padding:6px 5px;gap:4px}.orders .icon svg{width:12px;height:12px}.command-divider{margin:0 5px}.orders label{display:none}.orders select{font-size:8px;padding:6px 4px}.help-button{font-size:0;gap:0}.help-button>span{font-size:10px;width:17px;height:17px}.toast{white-space:normal;width:max-content;text-align:center;font-size:10px}.replay-tray{gap:7px;padding:10px 12px}.replay-tray>span{display:none}.replay-tray #exit-replay{font-size:8px}dialog{padding:24px;max-height:calc(100dvh - 28px)}dialog h2{font-size:30px}.scenario-list{grid-template-columns:1fr;gap:10px}.scenario-option{flex-direction:row}.scenario-art{width:90px;min-width:90px;height:auto}.scenario-art span{font-size:35px}.scenario-copy{padding:13px}.scenario-copy h3{font-size:23px;margin:4px 0}.scenario-copy>span{margin-top:8px}.scenario-copy p{font-size:9px}.guide-grid{grid-template-columns:1fr;gap:18px}.guide-grid article{padding-left:35px;position:relative}.guide-grid article>b{position:absolute;left:0;top:0;font-size:20px}.guide-grid h3{margin-top:0}.shortcut-grid{grid-template-columns:1fr 1fr;gap:15px}.fine-print{font-size:9px}.result-card{padding:28px}.result-card h2{font-size:36px}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+
+/* Formation condition stays beside the commands that affect it. */
+.condition-panel{display:grid;grid-template-columns:1fr 1fr 1fr 1.3fr 1.5fr auto;gap:15px;align-items:center;padding:13px 0 12px;margin-top:-2px;margin-bottom:10px;border-top:1px solid #dfe4d6;border-bottom:1px solid #dfe4d6}
+.condition-metric>span{display:flex;justify-content:space-between;gap:6px;font-size:9px;color:#7d8b71}.condition-metric b{font-weight:500;color:#53674b;font-variant-numeric:tabular-nums}.condition-track{height:3px;background:#dbe1d1;margin-top:7px;overflow:hidden}.condition-track i{display:block;height:3px;width:100%;background:#6e8e6a}.condition-metric.fatigue .condition-track i{width:0;background:#b78a51}.condition-detail{border-left:1px solid #dbe1d1;padding-left:14px;min-width:0}.condition-detail strong{font-size:10px;font-weight:500;color:#53664b;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.condition-detail span{font-size:8px;display:block;color:#8c977d;margin-top:5px;white-space:nowrap}.condition-panel>button{display:flex;align-items:center;gap:6px;background:#e0e7d8;border:1px solid #cbd7c1;border-radius:3px;font-size:9px;white-space:nowrap;padding:9px;color:#537147}.condition-panel .icon svg{width:12px;height:12px}.condition-panel>p{grid-column:1/-1;font-size:9px;color:#879479;line-height:1.5;margin-top:-2px}.dock-header #selection-info{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:440px}
+@media(max-width:1200px){.condition-panel{gap:9px;grid-template-columns:1fr 1fr 1fr 1.2fr 1.3fr auto}.condition-detail{padding-left:9px}.condition-detail strong{font-size:9px}.condition-panel>button{font-size:8px;padding:8px}.dock-header #selection-info{max-width:300px}}
+@media(max-width:600px){.condition-panel{grid-template-columns:1fr 1fr 1fr;gap:10px;padding:10px 0}.condition-panel>p{display:none}.condition-detail{border-left:0;padding:0}.condition-panel>button{padding:7px;justify-content:center;font-size:8px}.condition-metric>span{font-size:8px}.condition-detail strong{font-size:8px}.condition-detail span{font-size:7px;margin-top:3px}.dock-header #selection-info{max-width:270px}}
+
+</style>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="Field Command home"><span class="brand-mark">F<span>C</span></span><span>FIELD <b>COMMAND</b><small>A PLAYABLE HISTORY</small></span></a>
+    <nav aria-label="Main navigation"><button class="nav-active" id="battle-tab">Battlefield</button><button id="guide-top">Field guide <span>↗</span></button></nav>
+    <div class="edition"><span class="live-dot"></span>HISTORICAL SANDBOX <b>02</b></div>
+  </header>
+  <main class="app">
+    <aside class="sidebar">
+      <div class="sidebar-top"><span class="eyebrow">THE BATTLE AT HAND</span><button class="icon-btn mobile-close" id="close-sidebar" aria-label="Close battle settings">×</button></div>
+      <div class="scenario-heading"><span class="era" id="era">216 BCE · ANCIENT WORLD</span><h1 id="battle-name">Cannae</h1><p id="location">Apulia, southern Italy</p></div>
+      <button class="scenario-picker" id="scenario-picker"><span class="icon" data-icon="map"></span>Choose a different battle<span class="arrow">↗</span></button>
+      <div class="rule"></div>
+      <div class="commander"><span class="eyebrow">YOUR COMMAND</span><h2 id="commander">Hannibal Barca</h2><p><i class="army-dot friendly"></i><span id="army-name">Carthage</span></p></div>
+      <div class="mission"><span class="eyebrow">THE PLAN</span><p id="briefing">Hold the center. Send your cavalry around the flanks and close the circle.</p><div class="objective"><span class="icon" data-icon="flag"></span><span>Break the opposing army's morale.</span></div></div>
+      <div class="scale-setting"><div class="setting-label"><label for="army-size">Soldiers on the field</label><span id="size-value">10,000</span></div><select id="army-size"><option value="1000">1,000 · Small skirmish</option><option value="10000" selected>10,000 · Standard battle</option><option value="25000">25,000 · Grand battle</option><option value="50000">50,000 · Massive battle</option><option value="100000">100,000 · Epic battle</option></select><p>Choose your scale. Individual soldiers. Formation-level command.</p></div>
+      <div class="sidebar-actions"><button class="primary" id="play-button"><span class="icon" data-icon="play"></span><span id="play-label">Begin battle</span><kbd>Space</kbd></button><button class="restart" id="restart"><span class="icon" data-icon="restart"></span>Reset battlefield</button></div>
+      <div class="history-note"><span class="eyebrow">A MOMENT IN HISTORY</span><p id="history">Hannibal faced a larger Roman army. His double envelopment became one of history's best-known encirclements.</p><button id="history-button">Read the battle notes <span>↗</span></button></div>
+      <div class="sidebar-foot">HISTORICALLY INSPIRED · OUTCOME UNWRITTEN</div>
+    </aside>
+    <section class="battle-area" aria-label="Battlefield and command controls">
+      <div class="battle-toolbar"><div class="battle-state"><button class="icon-btn mobile-menu" id="open-sidebar" aria-label="Open battle settings">☰</button><span id="phase-dot" class="phase-dot"></span><strong id="phase-label">Deployment</strong><span class="separator">/</span><span id="battle-clock">00:00</span></div><div class="time-controls"><span class="speed-label">SPEED</span><button class="speed active" data-speed="1" aria-pressed="true">1×</button><button class="speed" data-speed="2" aria-pressed="false">2×</button><button class="speed" data-speed="4" aria-pressed="false">4×</button><span class="toolbar-divider"></span><button id="replay-button" class="replay-button" disabled><span class="icon" data-icon="replay"></span>Replay</button></div></div>
+      <div class="map-container" id="map-container" tabindex="0" role="application" aria-label="Tactical battlefield. Select formations using the cards below, then click on the map to move or on an enemy to attack. Space pauses. A selects all. H holds. C charges. Arrow keys pan.">
+        <div class="army-score" aria-label="Army strengths"><div><span><i class="army-dot friendly"></i><span id="friendly-label">CARTHAGE</span></span><strong id="friendly-count">4,000</strong></div><div class="balance-track"><span id="balance-fill"></span></div><div><span><i class="army-dot enemy"></i><span id="enemy-label">ROME</span></span><strong id="enemy-count">6,000</strong></div></div>
+        <div class="map-location"><span id="map-kicker">THE SECOND PUNIC WAR</span><strong id="map-title">The fields of Cannae</strong></div>
+        <div class="map-hint" id="map-hint"><span class="hint-number">01</span><span>Select a formation below.<br><b>Click the field to move. Click an enemy to attack.</b></span><button id="dismiss-hint" aria-label="Dismiss tip">×</button></div>
+        <div class="map-tools"><button id="zoom-in" title="Zoom in" aria-label="Zoom in">+</button><button id="zoom-out" title="Zoom out" aria-label="Zoom out">−</button><button id="reset-view" title="Fit battlefield" aria-label="Fit battlefield"><span class="icon" data-icon="fit"></span></button></div>
+        <div class="map-legend"><span><i class="legend-shape square"></i>Your army</span><span><i class="legend-shape diamond"></i>Opposition</span><span class="terrain-note">TERRAIN AFFECTS BATTLE</span></div>
+        <div class="performance"><span id="renderer-label">GPU</span><span id="fps">— FPS</span></div>
+        <div class="toast" id="toast" role="status" aria-live="polite"></div>
+        <div class="result-card" id="result-card" hidden><span class="eyebrow">THE FIELD FALLS SILENT</span><h2 id="result-title">Victory</h2><p id="result-description"></p><div><button class="primary" id="result-replay">Watch replay</button><button class="secondary" id="result-reset">Fight again</button></div></div>
+      </div>
+      <div class="replay-tray" id="replay-tray" hidden><button id="replay-play" aria-label="Play recording"><span class="icon" data-icon="play"></span></button><span>RECORDING</span><label for="replay-scrub" class="sr-only">Replay position</label><input id="replay-scrub" type="range" min="0" max="0" value="0"><time id="replay-time">00:00</time><button id="exit-replay">Return to battle ↗</button></div>
+      <div class="command-dock">
+        <div class="dock-header"><div><span class="eyebrow">YOUR FORMATIONS</span><span id="selection-info">Select a formation to give an order</span></div><button id="select-all">Select all <kbd>A</kbd></button></div>
+        <div class="condition-panel" id="condition-panel" hidden aria-label="Selected formation condition">
+          <div class="condition-metric"><span>Morale <b id="condition-morale">100%</b></span><div class="condition-track"><i id="condition-morale-bar"></i></div></div>
+          <div class="condition-metric"><span>Cohesion <b id="condition-cohesion">100%</b></span><div class="condition-track"><i id="condition-cohesion-bar"></i></div></div>
+          <div class="condition-metric fatigue"><span>Fatigue <b id="condition-fatigue">0%</b></span><div class="condition-track"><i id="condition-fatigue-bar"></i></div></div>
+          <div class="condition-detail"><strong id="condition-ammo">Melee weapons</strong><span id="condition-reload">Ready</span></div>
+          <div class="condition-detail"><strong id="condition-terrain">Open ground</strong><span id="condition-cover">No cover</span></div>
+          <button id="inspect-selection"><span class="icon" data-icon="fit"></span>View troops</button>
+          <p id="condition-advice">Keep your formations rested and protect their flanks.</p>
+        </div>
+        <div class="unit-roster" id="unit-roster" aria-label="Select your formations"></div>
+        <div class="command-row"><div class="orders"><button id="move-order" title="Click the field to move selected formations"><span class="icon" data-icon="move"></span>Move</button><button id="hold-order"><span class="icon" data-icon="shield"></span>Hold <kbd>H</kbd></button><button id="charge-order"><span class="icon" data-icon="swords"></span>Charge <kbd>C</kbd></button><span class="command-divider"></span><label for="formation-select">Formation</label><select id="formation-select" aria-label="Change formation"><option value="line">Line</option><option value="column">Column</option><option value="square">Square</option></select></div><button class="help-button" id="help-button"><span>?</span> Controls</button></div>
+      </div>
+    </section>
+  </main>
+  <dialog id="scenario-dialog"><div class="dialog-top"><span class="eyebrow">THE HISTORICAL ATLAS</span><button class="dialog-close" aria-label="Close battle selector">×</button></div><h2>Choose your battlefield.</h2><p class="dialog-intro">Three turning points. A different outcome is in your hands.</p><div class="scenario-list" id="scenario-list"></div><p class="fine-print">Scenarios use scaled armies and simplified terrain. They are playable interpretations, not exact historical reconstructions. Choosing a battle starts a fresh recording.</p></dialog>
+  <dialog id="guide-dialog"><div class="dialog-top"><span class="eyebrow">THE FIELD GUIDE</span><button class="dialog-close" aria-label="Close field guide">×</button></div><h2>Less to learn.<br>More to command.</h2><p class="dialog-intro">You command the formations in teal. Make the opposing army retreat to win.</p><div class="guide-grid"><article><b>01</b><h3>Select your soldiers</h3><p>Click a formation on the map or its card below. Drag a box to select several. Shift-click adds to your selection.</p></article><article><b>02</b><h3>Give one clear order</h3><p>Click open ground to move. Click an enemy formation to attack. Use Hold to defend or Charge to close quickly.</p></article><article><b>03</b><h3>Take your time</h3><p>Press Space to pause and issue orders. Rest tired troops. Hills and woodland affect combat; rivers require a ford. Watch ammunition and keep firing lanes clear.</p></article></div><div class="shortcut-grid"><span><kbd>A</kbd> Select all</span><span><kbd>H</kbd> Hold position</span><span><kbd>C</kbd> Charge</span><span><kbd>Esc</kbd> Deselect</span><span><kbd>Scroll</kbd> Zoom</span><span><kbd>↑ ↓ ← →</kbd> Pan</span></div><p class="fine-print">Pan by dragging with the right or middle mouse button. Touch: tap to select and command; drag empty ground to pan. Replay records your battle and lets you scrub through it. Up to 100,000 individual soldiers are drawn; combat and movement are calculated by formation. Select a formation to inspect fatigue, cohesion, ammunition, and cover. Use View troops for a close look. Performance depends on your device. After ten simulated minutes, remaining combat strength decides the result.</p><button class="primary dialog-close">Back to the field</button></dialog>
+  <dialog id="history-dialog"><div class="dialog-top"><span class="eyebrow">BATTLE NOTES</span><button class="dialog-close" aria-label="Close battle notes">×</button></div><h2 id="notes-title">Cannae</h2><p id="notes-date" class="dialog-intro"></p><p id="notes-context" class="notes-body"></p><h3>The tactical idea</h3><p id="notes-tactic" class="notes-body"></p><p class="fine-print">The setup takes inspiration from the historical battle. Army sizes, positions, terrain, combat rates, and unit types are adjusted for this prototype.</p><a id="notes-source" target="_blank" rel="noopener">Historical source ↗</a></dialog>
+  <script>
+window.BATTLES = [
+  {
+    id: 'cannae', name: 'Cannae', era: '216 BCE · ANCIENT WORLD', date: '2 August 216 BCE',
+    location: 'Apulia, southern Italy', commander: 'Hannibal Barca', friendly: 'Carthage', enemy: 'Rome', ratio: 0.4,
+    war: 'THE SECOND PUNIC WAR', mapTitle: 'The fields of Cannae', motif: 'I',
+    summary: 'An outnumbered army. A famous encirclement.',
+    briefing: 'Hold the center. Send your cavalry around the flanks and close the circle.',
+    history: 'Hannibal faced a larger Roman army. His double envelopment became one of history’s best-known encirclements.',
+    context: 'Rome brought a large army to confront Hannibal in southern Italy. As Roman infantry pressed into his center, Carthaginian troops attacked the exposed flanks and cavalry closed from behind.',
+    tactic: 'Hannibal’s center gave ground while infantry on the wings attacked the Roman flanks. His victorious cavalry then struck the rear. In this scenario, try holding your infantry while moving cavalry around the edges.',
+    source: 'https://www.worldhistory.org/Battle_of_Cannae/', sourceName: 'World History Encyclopedia'
+  },
+  {
+    id: 'hastings', name: 'Hastings', era: '1066 · MEDIEVAL WORLD', date: '14 October 1066',
+    location: 'Battle, East Sussex, England', commander: 'William of Normandy', friendly: 'Normans', enemy: 'English', ratio: 0.5,
+    war: 'THE NORMAN CONQUEST', mapTitle: 'Below the English ridge', motif: 'II',
+    summary: 'A shield wall. A crown in the balance.',
+    briefing: 'Pressure the English line with ranged troops. Commit your cavalry where the defense begins to open.',
+    history: 'Harold’s army held a defensive position on the ridge. William’s forces won after repeated attacks broke the English line.',
+    context: 'William crossed the Channel to claim England’s crown. Harold’s army held a strong defensive position, forcing the invaders into repeated attacks before the English line broke.',
+    tactic: 'Norman withdrawals drew English soldiers from their defensive positions, exposing them to counterattacks. Historians debate how deliberately the retreats were planned. Use your ranged troops and cavalry together to pressure the line.',
+    source: 'https://historicengland.org.uk/listing/the-list/list-entry/1000013', sourceName: 'Historic England'
+  },
+  {
+    id: 'austerlitz', name: 'Austerlitz', era: '1805 · AGE OF EMPIRES', date: '2 December 1805',
+    location: 'Near Slavkov u Brna, Czechia', commander: 'Napoleon Bonaparte', friendly: 'France', enemy: 'Allies', ratio: 0.48,
+    war: 'THE WAR OF THE THIRD COALITION', mapTitle: 'The Pratzen Heights', motif: 'III',
+    summary: 'A winter morning. A decisive counterattack.',
+    briefing: 'Keep a reserve. Hold one wing and concentrate your attack against the Allied center.',
+    history: 'Napoleon drew the Allies toward his right, then attacked the Pratzen Heights and split their center.',
+    context: 'Napoleon faced a combined Russian and Austrian army. As Allied columns moved against the French right, French troops attacked the Pratzen Heights and broke through the center.',
+    tactic: 'Timing shaped the attack on the Pratzen Heights: French troops struck after Allied columns descended toward the southern villages. Keep a reserve ready to exploit an opening in the center. Musket volleys and artillery need clear firing lanes; keep your infantry ready to protect the guns.',
+    source: 'https://www.napoleon.org/en/magazine/places/austerlitz-2/', sourceName: 'Fondation Napoléon'
+  }
+];
+
+</script>
+  <script>
+(function () {
+  'use strict';
+
+  const WIDTH = 1800, HEIGHT = 1200, CELL = 40;
+  const clamp = (v, min, max) => Math.max(min, Math.min(max, v));
+  const ellipse = (x, y, f) => ((x - f.x) / f.rx) ** 2 + ((y - f.y) / f.ry) ** 2;
+  const pointSegmentDistance2 = (x, y, a, b) => {
+    const dx = b.x - a.x, dy = b.y - a.y;
+    const t = clamp(((x - a.x) * dx + (y - a.y) * dy) / (dx * dx + dy * dy || 1), 0, 1);
+    return (x - a.x - t * dx) ** 2 + (y - a.y - t * dy) ** 2;
+  };
+  const segmentEllipseInterval = (ax, ay, bx, by, x, y, rx, ry) => {
+    const ox = (ax - x) / rx, oy = (ay - y) / ry;
+    const dx = (bx - ax) / rx, dy = (by - ay) / ry;
+    const a = dx * dx + dy * dy, b = 2 * (ox * dx + oy * dy), c = ox * ox + oy * oy - 1;
+    if (a < 1e-14) return c <= 0 ? [0, 1] : null;
+    const discriminant = b * b - 4 * a * c;
+    if (discriminant < 0) return null;
+    const root = Math.sqrt(discriminant);
+    const start = Math.max(0, (-b - root) / (2 * a)), end = Math.min(1, (-b + root) / (2 * a));
+    return start <= end ? [start, end] : null;
+  };
+  const segmentBoxInterval = (ax, ay, bx, by, minX, minY, maxX, maxY) => {
+    let start = 0, end = 1;
+    for (const [origin, delta, min, max] of [[ax, bx - ax, minX, maxX], [ay, by - ay, minY, maxY]]) {
+      if (Math.abs(delta) < 1e-12) { if (origin < min || origin > max) return null; }
+      else {
+        const t1 = (min - origin) / delta, t2 = (max - origin) / delta;
+        start = Math.max(start, Math.min(t1, t2)); end = Math.min(end, Math.max(t1, t2));
+        if (start > end) return null;
+      }
+    }
+    return [start, end];
+  };
+
+  // Terrain geometry is shared by movement, sight, combat, and the map renderer.
+  class FieldTerrain {
+    constructor(scenarioId) {
+      this.scenarioId = scenarioId;
+      this.width = WIDTH;
+      this.height = HEIGHT;
+      this.cellSize = CELL;
+      this.forests = [];
+      this.hills = [];
+      this.waters = [];
+      this.fords = [];
+      this.muds = [];
+      this.roads = [];
+      if (scenarioId === 'cannae') {
+        this.waters = [{
+          kind: 'river', name: 'Aufidus River', width: 58,
+          points: [{ x: 150, y: -80 }, { x: 190, y: 180 }, { x: 218, y: 360 },
+            { x: 180, y: 560 }, { x: 132, y: 790 }, { x: 168, y: 1000 }, { x: 205, y: 1280 }]
+        }];
+        this.fords = [{ x: 180, y: 560, r: 76, name: 'Shallow river crossing' }];
+        this.forests = [{ x: 1590, y: 135, rx: 135, ry: 85, name: 'Northern grove' },
+          { x: 1595, y: 1080, rx: 140, ry: 75, name: 'Southern grove' }];
+        this.hills = [{ x: 1410, y: 155, rx: 310, ry: 165, height: 18, name: 'Low rise' }];
+      } else if (scenarioId === 'hastings') {
+        this.hills = [{ x: 900, y: 430, rx: 680, ry: 220, height: 65, name: 'Senlac ridge' }];
+        this.forests = [{ x: 140, y: 180, rx: 150, ry: 170, name: 'Western woodland' },
+          { x: 1650, y: 150, rx: 170, ry: 180, name: 'Eastern woodland' },
+          { x: 1570, y: 1060, rx: 190, ry: 120, name: 'Southern woodland' }];
+        this.muds = [{ x: 820, y: 700, rx: 300, ry: 45, name: 'Wet low ground' }];
+      } else if (scenarioId === 'austerlitz') {
+        this.hills = [{ x: 950, y: 530, rx: 410, ry: 300, height: 82, name: 'Pratzen Heights' },
+          { x: 385, y: 205, rx: 185, ry: 150, height: 33, name: 'Northern rise' }];
+        this.waters = [{ kind: 'pond', x: 1450, y: 1020, rx: 240, ry: 96, name: 'Satschan ponds' },
+          { kind: 'pond', x: 1680, y: 850, rx: 90, ry: 115, name: 'Frozen fishpond' }];
+        this.forests = [{ x: 160, y: 155, rx: 125, ry: 110, name: 'Northern woodland' },
+          { x: 1570, y: 140, rx: 180, ry: 100, name: 'Eastern woodland' }];
+        this.muds = [{ x: 485, y: 740, rx: 140, ry: 250, name: 'Thawing marsh' },
+          { x: 1210, y: 900, rx: 200, ry: 60, name: 'Muddy pond approach' }];
+      }
+      this._columns = WIDTH / CELL;
+      this._rows = HEIGHT / CELL;
+      this._nodes = [];
+      this._pathCache = new Map();
+      this._buildNavigation();
+    }
+
+    _waterAt(x, y) {
+      for (const water of this.waters) {
+        if (water.kind === 'pond') {
+          if (ellipse(x, y, water) <= 1) return water;
+        } else {
+          const radius2 = (water.width / 2) ** 2;
+          for (let i = 1; i < water.points.length; i++) {
+            if (pointSegmentDistance2(x, y, water.points[i - 1], water.points[i]) <= radius2) return water;
+          }
+        }
+      }
+      return null;
+    }
+
+    sample(x, y) {
+      if (!Number.isFinite(x) || !Number.isFinite(y) || x < 0 || y < 0 || x > WIDTH || y > HEIGHT) {
+        return { type: 'plain', name: 'Map boundary', blocked: true, speed: 0, cover: 0, elevation: 0 };
+      }
+      const water = this._waterAt(x, y);
+      if (water) {
+        const ford = water.kind === 'river' && this.fords.find(f => (x - f.x) ** 2 + (y - f.y) ** 2 <= f.r ** 2);
+        return ford
+          ? { type: 'ford', name: ford.name || 'Ford', blocked: false, speed: 0.48, cover: 0, elevation: 0 }
+          : { type: 'water', name: water.name || 'Water', blocked: true, speed: 0, cover: 0, elevation: 0 };
+      }
+      let elevation = 0, hill = null;
+      for (const feature of this.hills) {
+        const q = ellipse(x, y, feature);
+        if (q < 1) {
+          const height = feature.height * (1 - q) ** 1.5;
+          if (height > elevation) { elevation = height; hill = feature; }
+        }
+      }
+      const base = { type: hill ? 'hill' : 'plain', name: hill ? hill.name : 'Open ground',
+        blocked: false, speed: 1, cover: 0, elevation };
+      for (const forest of this.forests) {
+        if (ellipse(x, y, forest) <= 1) {
+          return { ...base, type: 'forest', name: forest.name || 'Woodland', speed: 0.58, cover: 0.4 };
+        }
+      }
+      for (const mud of this.muds) {
+        if (ellipse(x, y, mud) <= 1) return { ...base, type: 'mud', name: mud.name || 'Mud', speed: 0.62 };
+      }
+      return base;
+    }
+
+    canTraverse(ax, ay, bx, by) {
+      return this._traversable(ax, ay, bx, by);
+    }
+
+    // Analytic segment tests catch even a grazing shoreline that fixed steps miss.
+    _traversable(ax, ay, bx, by) {
+      if (this.sample(ax, ay).blocked || this.sample(bx, by).blocked) return false;
+      const fords = this.fords.map(f => segmentEllipseInterval(ax, ay, bx, by, f.x, f.y, f.r, f.r))
+        .filter(Boolean).sort((a, b) => a[0] - b[0]);
+      const coveredByFord = interval => {
+        if (!interval) return true;
+        let cursor = interval[0];
+        for (const ford of fords) {
+          if (ford[1] < cursor) continue;
+          if (ford[0] > cursor + 1e-10) return false;
+          cursor = Math.max(cursor, ford[1]);
+          if (cursor >= interval[1] - 1e-10) return true;
+        }
+        return false;
+      };
+      for (const water of this.waters) {
+        if (water.kind === 'pond') {
+          if (segmentEllipseInterval(ax, ay, bx, by, water.x, water.y, water.rx, water.ry)) return false;
+          continue;
+        }
+        const radius = water.width / 2;
+        for (let i = 1; i < water.points.length; i++) {
+          const a = water.points[i - 1], b = water.points[i];
+          const length = Math.hypot(b.x - a.x, b.y - a.y);
+          const ux = (b.x - a.x) / length, uy = (b.y - a.y) / length;
+          const pax = (ax - a.x) * ux + (ay - a.y) * uy, pay = -(ax - a.x) * uy + (ay - a.y) * ux;
+          const pbx = (bx - a.x) * ux + (by - a.y) * uy, pby = -(bx - a.x) * uy + (by - a.y) * ux;
+          if (!coveredByFord(segmentBoxInterval(pax, pay, pbx, pby, 0, -radius, length, radius)) ||
+            !coveredByFord(segmentEllipseInterval(ax, ay, bx, by, a.x, a.y, radius, radius)) ||
+            !coveredByFord(segmentEllipseInterval(ax, ay, bx, by, b.x, b.y, radius, radius))) return false;
+        }
+      }
+      return true;
+    }
+
+    _buildNavigation() {
+      const columns = this._columns, rows = this._rows;
+      for (let row = 0; row < rows; row++) {
+        for (let col = 0; col < columns; col++) {
+          const x = (col + 0.5) * CELL, y = (row + 0.5) * CELL;
+          this._nodes.push({ x, y, col, row, terrain: this.sample(x, y), edges: [] });
+        }
+      }
+      for (let i = 0; i < this._nodes.length; i++) {
+        const node = this._nodes[i];
+        if (node.terrain.blocked) continue;
+        for (let dy = -1; dy <= 1; dy++) {
+          for (let dx = -1; dx <= 1; dx++) {
+            if (!dx && !dy) continue;
+            const col = node.col + dx, row = node.row + dy;
+            if (col < 0 || row < 0 || col >= columns || row >= rows) continue;
+            const next = this._nodes[row * columns + col];
+            if (next.terrain.blocked) continue;
+            // Both orthogonal cells must be open before a diagonal is allowed.
+            if (dx && dy && (this._nodes[node.row * columns + col].terrain.blocked ||
+              this._nodes[row * columns + node.col].terrain.blocked)) continue;
+            if (!this._traversable(node.x, node.y, next.x, next.y)) continue;
+            const distance = CELL * (dx && dy ? Math.SQRT2 : 1);
+            const uphill = Math.max(0, next.terrain.elevation - node.terrain.elevation);
+            const speed = (node.terrain.speed + next.terrain.speed) / 2;
+            node.edges.push({ to: row * columns + col, cost: distance / speed + uphill * 2.5 });
+          }
+        }
+      }
+    }
+
+    _nearestNode(x, y) {
+      const cx = clamp(Math.floor(x / CELL), 0, this._columns - 1);
+      const cy = clamp(Math.floor(y / CELL), 0, this._rows - 1);
+      let best = -1, bestDistance = Infinity;
+      // Nearby centers with a clear connecting segment. Never snap across a river.
+      for (let row = Math.max(0, cy - 2); row <= Math.min(this._rows - 1, cy + 2); row++) {
+        for (let col = Math.max(0, cx - 2); col <= Math.min(this._columns - 1, cx + 2); col++) {
+          const index = row * this._columns + col, node = this._nodes[index];
+          if (node.terrain.blocked) continue;
+          const distance = (x - node.x) ** 2 + (y - node.y) ** 2;
+          if (distance < bestDistance && this._traversable(x, y, node.x, node.y)) {
+            best = index;
+            bestDistance = distance;
+          }
+        }
+      }
+      return best;
+    }
+
+    _snapTarget(x, y, sx, sy) {
+      if (!this.sample(x, y).blocked) return { x, y };
+      // A click on a shoreline resolves to nearby dry ground. Ties prefer the
+      // issuing unit's bank, while a deliberate far-bank order still uses a ford.
+      for (let radius = 8; radius <= 160; radius += 8) {
+        let best = null, distance = Infinity;
+        for (let step = 0; step < 32; step++) {
+          const angle = step * Math.PI / 16;
+          const point = { x: x + Math.cos(angle) * radius, y: y + Math.sin(angle) * radius };
+          if (this.sample(point.x, point.y).blocked) continue;
+          const d = (point.x - sx) ** 2 + (point.y - sy) ** 2;
+          if (d < distance) { best = point; distance = d; }
+        }
+        if (best) return best;
+      }
+      return null;
+    }
+
+    findPath(sx, sy, tx, ty) {
+      if (![sx, sy, tx, ty].every(Number.isFinite) || this.sample(sx, sy).blocked) return [];
+      tx = clamp(tx, 2, WIDTH - 2);
+      ty = clamp(ty, 2, HEIGHT - 2);
+      const target = this._snapTarget(tx, ty, sx, sy);
+      if (!target) return [];
+      if (Math.hypot(target.x - sx, target.y - sy) < 0.01) return [];
+      if (this._traversable(sx, sy, target.x, target.y)) return [target];
+      const start = this._nearestNode(sx, sy), goal = this._nearestNode(target.x, target.y);
+      if (start < 0 || goal < 0) return [];
+      const cacheKey = start + ':' + goal;
+      let indices = this._pathCache.get(cacheKey);
+      if (!indices) {
+        indices = this._search(start, goal);
+        if (!indices) return [];
+        if (this._pathCache.size >= 96) this._pathCache.delete(this._pathCache.keys().next().value);
+        this._pathCache.set(cacheKey, indices);
+      }
+      const rough = [{ x: sx, y: sy }, ...indices.map(i => ({ x: this._nodes[i].x, y: this._nodes[i].y })), target];
+      const path = [];
+      let cursor = 0;
+      // Only remove intermediate points when the entire replacement is passable.
+      while (cursor < rough.length - 1) {
+        let next = rough.length - 1;
+        while (next > cursor + 1 && !this._traversable(rough[cursor].x, rough[cursor].y, rough[next].x, rough[next].y)) next--;
+        const point = rough[next];
+        if (!this._traversable(rough[cursor].x, rough[cursor].y, point.x, point.y)) return [];
+        if (Math.hypot(point.x - rough[cursor].x, point.y - rough[cursor].y) > 0.01) path.push({ x: point.x, y: point.y });
+        cursor = next;
+      }
+      return path;
+    }
+
+    _search(start, goal) {
+      const count = this._nodes.length, costs = new Float64Array(count);
+      costs.fill(Infinity);
+      costs[start] = 0;
+      const parents = new Int32Array(count);
+      parents.fill(-1);
+      const closed = new Uint8Array(count), heap = [];
+      const end = this._nodes[goal];
+      const heuristic = index => Math.hypot(this._nodes[index].x - end.x, this._nodes[index].y - end.y);
+      const push = item => {
+        heap.push(item);
+        let i = heap.length - 1;
+        while (i > 0) {
+          const p = (i - 1) >> 1;
+          if (heap[p].f <= item.f) break;
+          heap[i] = heap[p]; i = p;
+        }
+        heap[i] = item;
+      };
+      const pop = () => {
+        const first = heap[0], last = heap.pop();
+        if (heap.length) {
+          let i = 0;
+          while (i * 2 + 1 < heap.length) {
+            let child = i * 2 + 1;
+            if (child + 1 < heap.length && heap[child + 1].f < heap[child].f) child++;
+            if (heap[child].f >= last.f) break;
+            heap[i] = heap[child]; i = child;
+          }
+          heap[i] = last;
+        }
+        return first;
+      };
+      push({ index: start, f: heuristic(start) });
+      while (heap.length) {
+        const current = pop().index;
+        if (closed[current]) continue;
+        if (current === goal) {
+          const path = [goal];
+          while (path[path.length - 1] !== start) {
+            const parent = parents[path[path.length - 1]];
+            if (parent < 0) return null;
+            path.push(parent);
+          }
+          return path.reverse();
+        }
+        closed[current] = 1;
+        for (const edge of this._nodes[current].edges) {
+          if (closed[edge.to]) continue;
+          const cost = costs[current] + edge.cost;
+          if (cost < costs[edge.to]) {
+            costs[edge.to] = cost;
+            parents[edge.to] = current;
+            push({ index: edge.to, f: cost + heuristic(edge.to) });
+          }
+        }
+      }
+      return null;
+    }
+
+    lineOfSight(ax, ay, bx, by) {
+      if (![ax, ay, bx, by].every(Number.isFinite)) return false;
+      const from = this.sample(ax, ay), to = this.sample(bx, by);
+      if (from.blocked || to.blocked) return false;
+      const distance = Math.hypot(bx - ax, by - ay);
+      if (distance < 1) return true;
+      const steps = Math.max(2, Math.ceil(distance / 12));
+      const startHeight = from.elevation + 6, endHeight = to.elevation + 6;
+      let forestDepth = 0;
+      for (let i = 1; i < steps; i++) {
+        const t = i / steps, terrain = this.sample(ax + (bx - ax) * t, ay + (by - ay) * t);
+        const rayHeight = startHeight + (endHeight - startHeight) * t;
+        if (terrain.elevation > rayHeight) return false;
+        // A few trees confer cover. Deep woodland blocks sight and direct fire.
+        if (terrain.type === 'forest' && terrain.elevation + 16 > rayHeight) {
+          forestDepth += distance / steps;
+          if (forestDepth >= 55) return false;
+        }
+      }
+      return true;
+    }
+  }
+
+  window.FieldTerrain = FieldTerrain;
+})();
+
+</script>
+  <script>
+(function (global) {
+  'use strict';
+
+  const WIDTH = 1800;
+  const HEIGHT = 1200;
+  const TAU = Math.PI * 2;
+  const clamp = (n, low, high) => Math.max(low, Math.min(high, n));
+  const viable = (f) => f.count > 0 && f.status !== 'routing' && f.status !== 'defeated';
+  const distance = (a, b) => Math.hypot(a.x - b.x, a.y - b.y);
+  const angleDistance = (a, b) => Math.abs(Math.atan2(Math.sin(a - b), Math.cos(a - b)));
+
+  const ROSTERS = {
+    cannae: [
+      [
+        ['Iberian horse', 'cavalry'], ['Libyan spears', 'infantry'], ['Gallic warriors', 'infantry'],
+        ['Iberian swords', 'infantry'], ['African veterans', 'infantry'], ['Numidian horse', 'cavalry'],
+        ['Hasdrubal’s cavalry', 'cavalry'], ['Balearic slingers', 'archers'], ['Carthaginian reserve', 'infantry'],
+        ['Libyan reserve', 'infantry'], ['Light skirmishers', 'archers'], ['Maharbal’s horse', 'cavalry']
+      ],
+      [
+        ['Roman cavalry', 'cavalry'], ['First legion', 'infantry'], ['Second legion', 'infantry'],
+        ['Third legion', 'infantry'], ['Fourth legion', 'infantry'], ['Allied cavalry', 'cavalry'],
+        ['Latin allies', 'infantry'], ['Velites', 'archers'], ['Veteran triarii', 'infantry'],
+        ['Allied infantry', 'infantry'], ['Roman skirmishers', 'archers'], ['Italian reserve', 'infantry']
+      ]
+    ],
+    hastings: [
+      [
+        ['Breton knights', 'cavalry'], ['Breton infantry', 'infantry'], ['Norman men-at-arms', 'infantry'],
+        ['Ducal guard', 'infantry'], ['French infantry', 'infantry'], ['Norman knights', 'cavalry'],
+        ['Breton horse', 'cavalry'], ['Norman bowmen', 'archers'], ['Norman reserve', 'infantry'],
+        ['French bowmen', 'archers'], ['Flemish bowmen', 'archers'], ['William’s knights', 'cavalry']
+      ],
+      [
+        ['Western fyrd', 'infantry'], ['Housecarls', 'infantry'], ['Royal housecarls', 'infantry'],
+        ['Harold’s guard', 'infantry'], ['Kentish fyrd', 'infantry'], ['Eastern fyrd', 'infantry'],
+        ['Sussex levy', 'infantry'], ['English bowmen', 'archers'], ['London fyrd', 'infantry'],
+        ['Wessex reserve', 'infantry'], ['Saxon skirmishers', 'archers'], ['Northern levy', 'infantry']
+      ]
+    ],
+    austerlitz: [
+      [
+        ['Light cavalry', 'cavalry'], ['Saint-Hilaire’s division', 'infantry'], ['Vandamme’s division', 'infantry'],
+        ['Davout’s infantry', 'infantry'], ['Lannes’ infantry', 'infantry'], ['French cuirassiers', 'cavalry'],
+        ['Imperial cavalry', 'cavalry'], ['French voltigeurs', 'infantry'], ['Imperial Guard', 'infantry'],
+        ['Bernadotte’s reserve', 'infantry'], ['French artillery', 'artillery'], ['French dragoons', 'cavalry']
+      ],
+      [
+        ['Austrian cavalry', 'cavalry'], ['Russian first column', 'infantry'], ['Russian second column', 'infantry'],
+        ['Austrian infantry', 'infantry'], ['Allied center', 'infantry'], ['Russian cavalry', 'cavalry'],
+        ['Russian dragoons', 'cavalry'], ['Russian skirmishers', 'infantry'], ['Russian Guard', 'infantry'],
+        ['Allied reserve', 'infantry'], ['Allied artillery', 'artillery'], ['Guard cavalry', 'cavalry']
+      ]
+    ]
+  };
+
+  function hashString(value) {
+    let hash = 2166136261;
+    for (let i = 0; i < value.length; i++) {
+      hash ^= value.charCodeAt(i);
+      hash = Math.imul(hash, 16777619);
+    }
+    return hash >>> 0;
+  }
+
+  class BattleEngine {
+    constructor(scenario = {}, total = 10000) {
+      this.scenario = scenario;
+      this.scenarioId = String(scenario.id || 'cannae').toLowerCase();
+      this.time = 0;
+      this.winner = null;
+      this.formations = [];
+      this.effects = [];
+      this.timeLimit = 600;
+      this.resultReason = null;
+      this._effectId = 0;
+      this.terrain = typeof global.FieldTerrain === 'function' ? new global.FieldTerrain(this.scenarioId) : {
+        sample: () => ({type: 'plain', name: 'Open ground', blocked: false, speed: 1, cover: 0, elevation: 0}),
+        findPath: (sx, sy, tx, ty) => [{x: tx, y: ty}],
+        lineOfSight: () => true
+      };
+      this.seed = Number.isFinite(scenario.seed) ? scenario.seed >>> 0 : hashString(this.scenarioId);
+      this.randomState = this.seed || 1;
+      this._aiClock = 0;
+      this.width = WIDTH;
+      this.height = HEIGHT;
+      const size = Number.isFinite(+total) ? clamp(Math.floor(+total), 0, 100000) : 10000;
+      const ratio = Number.isFinite(+scenario.ratio) ? clamp(+scenario.ratio, 0, 1) : 0.5;
+      const friendlySize = Math.round(size * ratio);
+      const sizes = [friendlySize, size - friendlySize];
+      this.friendlyInitial = sizes[0];
+      this.enemyInitial = sizes[1];
+      const roster = ROSTERS[this.scenarioId] || ROSTERS.cannae;
+
+      for (let team = 0; team < 2; team++) {
+        const weights = roster[team].map(([, type]) => type === 'artillery' ? 0.2 : type === 'cavalry' ? 0.8 : type === 'archers' ? 0.75 : 1.2);
+        const weightSum = weights.reduce((sum, weight) => sum + weight, 0);
+        const allocations = weights.map(weight => Math.floor(sizes[team] * weight / weightSum));
+        let remainder = sizes[team] - allocations.reduce((sum, n) => sum + n, 0);
+        for (let i = 0; remainder > 0; i = (i + 1) % 12, remainder--) allocations[i]++;
+        for (let index = 0; index < 12; index++) {
+          const row = Math.floor(index / 6);
+          const col = index % 6;
+          const [name, type] = roster[team][index];
+          const initial = allocations[index];
+          let x = 300 + col * 240;
+          let y = team === 0 ? 790 + row * 120 : 410 - row * 120;
+          if (this.scenarioId === 'cannae' && team === 0) {
+            if (type === 'cavalry') x += col < 3 ? -85 : 85;
+            if (!row) y -= (2.5 - Math.abs(col - 2.5)) * 24;
+          }
+          if (this.scenarioId === 'hastings' && team === 1) y -= 32;
+          if (this.scenarioId === 'austerlitz') x += team === 0 ? -35 : 35;
+          if (this.terrain.sample(x, y).blocked) {
+            const spawn = this._nearestGround(x, y);
+            x = spawn.x; y = spawn.y;
+          }
+          const weapon = type === 'artillery' ? 'cannon' : this.scenarioId === 'austerlitz' && type !== 'cavalry' ? 'musket' :
+            type === 'archers' ? (this.scenarioId === 'cannae' ? 'sling' : 'bow') :
+              /spear|triarii|fyrd|levy/i.test(name) ? 'spear' : 'sword';
+          const profile = {
+            cannon: [580, 16, 13], musket: [285, 32, 8], bow: [315, 24, 6], sling: [290, 28, 5.5], spear: [0, 0, 0], sword: [0, 0, 0]
+          }[weapon];
+          const formation = {
+            id: team * 12 + index,
+            team, name, type, x, y,
+            angle: team === 0 ? -Math.PI / 2 : Math.PI / 2,
+            width: type === 'cavalry' ? 124 : 142,
+            depth: type === 'cavalry' ? 66 : 58,
+            initial, count: initial,
+            morale: initial ? 100 : 0,
+            fatigue: 0, cohesion: initial ? 100 : 0,
+            weapon, range: profile[0], ammo: profile[1], maxAmmo: profile[1],
+            reload: 0, reloadDuration: profile[2],
+            terrain: 'Open ground', terrainType: 'plain', cover: 0, elevation: 0,
+            momentum: 0,
+            status: initial ? 'holding' : 'defeated',
+            targetX: x, targetY: y, targetId: null,
+            stance: 'line',
+            speed: type === 'cavalry' ? 56 : type === 'artillery' ? 18 : type === 'archers' ? 35 : 30,
+            command: 'hold',
+            kills: 0,
+            chargeTime: 0,
+            combatTargetId: null,
+            _lossFraction: 0,
+            _killFraction: 0,
+            _path: [], _pathClock: 0, _plannedX: NaN, _plannedY: NaN,
+            _moved: 0, _impactClock: 0, _underFire: 0,
+            _skill: 0.91 + this.random() * 0.18,
+            _homeX: x,
+            _homeY: y,
+            _baseWidth: type === 'cavalry' ? 124 : 142,
+            _baseDepth: type === 'cavalry' ? 66 : 58
+          };
+          // The Cannae roster trades fewer troops for mobile, experienced formations.
+          if (this.scenarioId === 'cannae' && team === 0) formation._skill *= 1.15;
+          if (this.scenarioId === 'hastings' && team === 1) formation._skill *= 1.04;
+          this._sampleFormation(formation);
+          this.formations.push(formation);
+        }
+      }
+      this._checkWinner();
+    }
+
+    random() {
+      let t = this.randomState += 0x6D2B79F5;
+      t = Math.imul(t ^ t >>> 15, t | 1);
+      t ^= t + Math.imul(t ^ t >>> 7, t | 61);
+      this.randomState >>>= 0;
+      return ((t ^ t >>> 14) >>> 0) / 4294967296;
+    }
+
+    _nearestGround(x, y) {
+      for (let radius = 0; radius <= 240; radius += 12) {
+        for (let angle = 0; angle < TAU; angle += Math.PI / 8) {
+          const px = clamp(x + Math.cos(angle) * radius, 20, WIDTH - 20);
+          const py = clamp(y + Math.sin(angle) * radius, 20, HEIGHT - 20);
+          if (!this.terrain.sample(px, py).blocked) return {x: px, y: py};
+        }
+      }
+      return {x, y};
+    }
+
+    _sampleFormation(f) {
+      const terrain = this.terrain.sample(f.x, f.y);
+      f.terrain = terrain.name;
+      f.terrainType = terrain.type;
+      f.cover = terrain.cover;
+      f.elevation = terrain.elevation;
+      return terrain;
+    }
+
+    _clearPath(ax, ay, bx, by) {
+      if (typeof this.terrain.canTraverse === 'function') return this.terrain.canTraverse(ax, ay, bx, by);
+      if (typeof this.terrain._traversable === 'function') return this.terrain._traversable(ax, ay, bx, by);
+      const steps = Math.max(1, Math.ceil(Math.hypot(bx - ax, by - ay) / 10));
+      for (let i = 1; i <= steps; i++) {
+        if (this.terrain.sample(ax + (bx - ax) * i / steps, ay + (by - ay) * i / steps).blocked) return false;
+      }
+      return true;
+    }
+
+    _planPath(f) {
+      f._path = this._clearPath(f.x, f.y, f.targetX, f.targetY) ? [{x: f.targetX, y: f.targetY}] :
+        this.terrain.findPath(f.x, f.y, f.targetX, f.targetY).map(p => ({x: p.x, y: p.y}));
+      f._plannedX = f.targetX;
+      f._plannedY = f.targetY;
+      f._pathClock = 1.2;
+      if (f.command === 'move' && f._path.length) {
+        const endpoint = f._path[f._path.length - 1];
+        f.targetX = endpoint.x; f.targetY = endpoint.y;
+      }
+    }
+
+    _position(f, x, y) {
+      x = clamp(x, 15, WIDTH - 15); y = clamp(y, 15, HEIGHT - 15);
+      if (!this._clearPath(f.x, f.y, x, y)) return false;
+      f._moved += Math.hypot(x - f.x, y - f.y);
+      f.x = x; f.y = y;
+      return true;
+    }
+
+    _friendlyObstruction(f, target) {
+      const dx = target.x - f.x, dy = target.y - f.y;
+      const lengthSquared = dx * dx + dy * dy;
+      if (!lengthSquared) return false;
+      for (const ally of this.formations) {
+        if (ally === f || ally.team !== f.team || !viable(ally)) continue;
+        const projection = ((ally.x - f.x) * dx + (ally.y - f.y) * dy) / lengthSquared;
+        if (projection < 0.04 || projection > 0.94) continue;
+        // Arcing arrows clear distant friendly ranks; firearms need an open lane.
+        if ((f.weapon === 'bow' || f.weapon === 'sling') && projection * Math.sqrt(lengthSquared) > 85) continue;
+        const separation = Math.hypot(ally.x - f.x - projection * dx, ally.y - f.y - projection * dy);
+        if (separation < Math.min(ally.width, ally.depth) * 0.45 + 8) return true;
+      }
+      return false;
+    }
+
+    _canFire(f, target) {
+      if (!f.range || f.ammo <= 0 || distance(f, target) > f.range) return false;
+      const bearing = Math.atan2(target.y - f.y, target.x - f.x);
+      const arc = f.stance === 'square' ? Math.PI : f.weapon === 'cannon' ? 0.55 : f.weapon === 'musket' ? 0.8 : 1.05;
+      return angleDistance(bearing, f.angle) <= arc &&
+        this.terrain.lineOfSight(f.x, f.y, target.x, target.y) && !this._friendlyObstruction(f, target);
+    }
+
+    _emit(type, f, target, life) {
+      this.effects.push({id: ++this._effectId, type, x: f.x, y: f.y, tx: target.x, ty: target.y, time: this.time, life});
+    }
+
+    _selected(ids) {
+      const selected = new Set(Array.isArray(ids) ? ids : [ids]);
+      return this.formations.filter(f => f.team === 0 && selected.has(f.id) && viable(f));
+    }
+
+    order(ids, x, y, targetId = null) {
+      if (this.winner || !Number.isFinite(x) || !Number.isFinite(y)) return;
+      const selected = this._selected(ids);
+      if (!selected.length) return;
+      const target = this.formations.find(f => f.id === targetId && f.team === 1 && viable(f));
+      const centerX = selected.reduce((sum, f) => sum + f.x, 0) / selected.length;
+      const centerY = selected.reduce((sum, f) => sum + f.y, 0) / selected.length;
+      const spreadX = Math.max(1, ...selected.map(f => Math.abs(f.x - centerX)));
+      const spreadY = Math.max(1, ...selected.map(f => Math.abs(f.y - centerY)));
+      const scale = Math.min(1, 450 / spreadX, 180 / spreadY);
+      for (const f of selected) {
+        f.targetX = clamp(x + (f.x - centerX) * scale, 65, WIDTH - 65);
+        f.targetY = clamp(y + (f.y - centerY) * scale, 65, HEIGHT - 65);
+        f.targetId = target ? target.id : null;
+        f.command = target ? 'attack' : 'move';
+        f.status = 'moving';
+        f.chargeTime = 0;
+        f._pathClock = 0; f._path = []; f._plannedX = NaN;
+      }
+    }
+
+    hold(ids) {
+      for (const f of this._selected(ids)) {
+        f.targetX = f.x;
+        f.targetY = f.y;
+        f.targetId = null;
+        f.command = 'hold';
+        f.status = 'holding';
+        f.chargeTime = 0;
+        f._path = []; f.momentum = 0;
+      }
+    }
+
+    charge(ids) {
+      if (this.winner) return;
+      for (const f of this._selected(ids)) {
+        const enemy = this._nearest(f);
+        if (!enemy) continue;
+        f.targetId = enemy.id;
+        f.targetX = enemy.x;
+        f.targetY = enemy.y;
+        f.command = f.type === 'artillery' ? 'attack' : 'charge';
+        f.status = f.type === 'artillery' ? 'moving' : 'charging';
+        f.chargeTime = f.type === 'artillery' ? 0 : 1;
+        f._pathClock = 0; f._path = []; f._plannedX = NaN;
+      }
+    }
+
+    setFormation(ids, stance) {
+      if (!['line', 'column', 'square'].includes(stance)) return;
+      for (const f of this._selected(ids)) {
+        if (stance === 'square' && f.weapon !== 'musket') continue;
+        if (f.stance !== stance) f.cohesion = Math.max(30, f.cohesion - 8);
+        f.stance = stance;
+        if (stance === 'square') {
+          f.width = f.depth = Math.sqrt(f._baseWidth * f._baseDepth);
+        } else if (stance === 'column') {
+          f.width = f._baseWidth * 0.5;
+          f.depth = f._baseDepth * 2;
+        } else {
+          f.width = f._baseWidth;
+          f.depth = f._baseDepth;
+        }
+      }
+    }
+
+    _nearest(f) {
+      let result = null;
+      let best = Infinity;
+      for (const enemy of this.formations) {
+        if (enemy.team === f.team || !viable(enemy)) continue;
+        const d = distance(f, enemy);
+        if (d < best) { result = enemy; best = d; }
+      }
+      return result;
+    }
+
+    _ai() {
+      for (const f of this.formations) {
+        if (f.team !== 1 || !viable(f)) continue;
+        let target = this._nearest(f);
+        if (!target) continue;
+        if (this.scenarioId === 'hastings') {
+          // English infantry protects the ridge and makes only short counterattacks.
+          const counterattack = f.type !== 'archers' && distance(f, target) < 190 && target.y < 580;
+          if (!counterattack) {
+            f.targetId = null;
+            f.targetX = f._homeX;
+            f.targetY = f._homeY;
+            f.command = Math.hypot(f.x - f._homeX, f.y - f._homeY) > 8 ? 'move' : 'hold';
+            continue;
+          }
+        }
+        if (this.scenarioId === 'austerlitz' && this.time < 80) {
+          const wing = f.id % 6;
+          if (wing === 2 && distance(f, target) > 225) {
+            // A thin reserve stays on the heights as the southern columns advance.
+            f.targetId = null;
+            f.command = 'hold';
+            f.targetX = f.x;
+            f.targetY = f.y;
+            continue;
+          }
+          if (wing >= 3) {
+            let best = Infinity;
+            for (const candidate of this.formations) {
+              if (candidate.team !== 0 || !viable(candidate)) continue;
+              const score = distance(f, candidate) - Math.max(0, candidate.x - 900) * 0.8;
+              if (score < best) { best = score; target = candidate; }
+            }
+          }
+        }
+        f.targetId = target.id;
+        f.command = 'attack';
+        f.targetX = target.x;
+        f.targetY = target.y;
+      }
+    }
+
+    _separate(dt) {
+      for (let i = 0; i < this.formations.length; i++) {
+        const a = this.formations[i];
+        if (!viable(a)) continue;
+        for (let j = i + 1; j < this.formations.length; j++) {
+          const b = this.formations[j];
+          if (a.team !== b.team || !viable(b)) continue;
+          const moveA = a.command !== 'hold';
+          const moveB = b.command !== 'hold';
+          if (!moveA && !moveB) continue;
+          let dx = a.x - b.x;
+          let dy = a.y - b.y;
+          let d = Math.hypot(dx, dy);
+          const spacing = Math.min(125, (a.width + b.width) * 0.3 + (a.depth + b.depth) * 0.2);
+          if (d >= spacing) continue;
+          if (d < 0.01) {
+            dx = Math.cos((a.id + b.id) * 2.4);
+            dy = Math.sin((a.id + b.id) * 2.4);
+            d = 1;
+          }
+          const correction = Math.min(spacing - d, 12 * dt) / (moveA && moveB ? 2 : 1);
+          if (moveA) {
+            this._position(a, a.x + dx / d * correction, a.y + dy / d * correction);
+          }
+          if (moveB) {
+            this._position(b, b.x - dx / d * correction, b.y - dy / d * correction);
+          }
+        }
+      }
+    }
+
+    _meleeRange(a, b) {
+      return 28 + (a.depth + b.depth) * 0.32 + (a.width + b.width) * 0.13;
+    }
+
+    _move(f, dt) {
+      f.combatTargetId = null;
+      f._moved = 0;
+      f._pathClock -= dt;
+      f.reload = Math.max(0, f.reload - dt / (1 + f.fatigue * 0.006));
+      f._impactClock = Math.max(0, f._impactClock - dt);
+      f._underFire = Math.max(0, f._underFire - dt);
+      if (f.status === 'defeated') return;
+      const routing = f.status === 'routing';
+      let target = f.targetId === null ? null : this.formations[f.targetId];
+      if (target && (!viable(target) || target.team === f.team)) {
+        target = f.command === 'attack' || f.command === 'charge' ? this._nearest(f) : null;
+        f.targetId = target ? target.id : null;
+      }
+      if (target) {
+        f.targetX = target.x;
+        f.targetY = target.y;
+      }
+      if (routing) {
+        target = null;
+        f.targetY = f.team === 0 ? HEIGHT - 20 : 20;
+        if (!Number.isFinite(f._retreatX)) f._retreatX = f.x;
+        f.targetX = f._retreatX;
+      }
+      const terrain = this._sampleFormation(f);
+      if (f.command === 'hold') { f.status = 'holding'; f.momentum = Math.max(0, f.momentum - dt); return; }
+      const targetDistance = Math.hypot(f.targetX - f.x, f.targetY - f.y);
+      const canStandOff = target && f.range && f.ammo > 0 && f.command !== 'charge' && this.terrain.lineOfSight(f.x, f.y, target.x, target.y);
+      const stopDistance = target ? (canStandOff ? f.range * 0.78 : this._meleeRange(f, target) * 0.86) : 3;
+      if (targetDistance <= stopDistance && (!target || this._clearPath(f.x, f.y, target.x, target.y) || canStandOff)) {
+        if (target) {
+          const bearing = Math.atan2(target.y - f.y, target.x - f.x);
+          const turn = Math.atan2(Math.sin(bearing - f.angle), Math.cos(bearing - f.angle));
+          f.angle += clamp(turn, -dt, dt);
+        }
+        if (!routing) f.status = target ? 'attacking' : 'holding';
+        if (!target && !routing) f.command = 'hold';
+        f.momentum = Math.max(0, f.momentum - dt * 0.32);
+        return;
+      }
+      const drift = Math.hypot(f.targetX - f._plannedX, f.targetY - f._plannedY);
+      if (!Number.isFinite(f._plannedX) || (f._pathClock <= 0 && (drift > 45 || !f._path.length))) this._planPath(f);
+      while (f._path.length && Math.hypot(f._path[0].x - f.x, f._path[0].y - f.y) < 5) f._path.shift();
+      const point = f._path[0];
+      if (!point) { f.momentum = 0; if (!routing) f.status = 'holding'; return; }
+      const dx = point.x - f.x, dy = point.y - f.y;
+      const d = Math.hypot(dx, dy);
+      const desired = Math.atan2(dy, dx);
+      const turn = Math.atan2(Math.sin(desired - f.angle), Math.cos(desired - f.angle));
+      f.angle = (f.angle + clamp(turn, -1.6 * dt, 1.6 * dt)) % TAU;
+      const charging = f.command === 'charge' && f.type !== 'artillery' && f.fatigue < 82;
+      f.chargeTime = charging ? 1 : 0;
+      const stanceSpeed = f.stance === 'square' ? 0.48 : f.stance === 'column' ? 1.18 : 1;
+      const terrainSpeed = terrain.speed * (f.type === 'cavalry' && terrain.cover > 0.2 ? 0.7 : 1);
+      const nextTerrain = this.terrain.sample(point.x, point.y);
+      const uphill = clamp(1 - Math.max(0, nextTerrain.elevation - terrain.elevation) / Math.max(60, d) * 0.9, 0.58, 1);
+      const speed = f.speed * stanceSpeed * (charging ? 1.35 : routing ? 1.15 : 1) * terrainSpeed * uphill *
+        (1 - f.fatigue * 0.0045) * (0.65 + f.cohesion * 0.0035) * clamp(1 - Math.abs(turn) / Math.PI * 0.65, 0.35, 1);
+      const finalStep = f._path.length === 1 && (!target || this._clearPath(f.x, f.y, f.targetX, f.targetY));
+      const step = Math.max(0, Math.min(d, finalStep ? Math.max(0, targetDistance - stopDistance) : d, speed * dt));
+      if (!this._position(f, f.x + dx / d * step, f.y + dy / d * step)) { f._path = []; f._pathClock = 0; }
+      f.momentum = clamp(f.momentum + (charging && f.type === 'cavalry' && terrain.cover < 0.2 ? dt * 0.16 : -dt * 0.35), 0, 1);
+      if (!routing) f.status = charging ? 'charging' : 'moving';
+    }
+
+    update(dt) {
+      if (this.winner || !Number.isFinite(dt) || dt <= 0) return;
+      dt = Math.min(dt, 0.05);
+      this.time += dt;
+      this.effects = this.effects.filter(effect => this.time - effect.time < effect.life);
+      this._aiClock -= dt;
+      if (this._aiClock <= 0) { this._ai(); this._aiClock = 0.7; }
+      for (const f of this.formations) this._move(f, dt);
+      this._separate(dt);
+
+      const damage = new Float64Array(24);
+      const pressure = new Float64Array(24);
+      const disruption = new Float64Array(24);
+      const engaged = new Uint8Array(24);
+      const tempo = this.scenarioId === 'cannae' ? 0.4 : this.scenarioId === 'hastings' ? 1.35 : 1.1;
+      for (const f of this.formations) {
+        if (!viable(f)) continue;
+        this._sampleFormation(f);
+        let target = this._nearest(f);
+        if (!target) continue;
+        const d = distance(f, target);
+        const melee = d < this._meleeRange(f, target) && this._clearPath(f.x, f.y, target.x, target.y);
+        const readiness = f._skill * (0.55 + f.morale / 180) * (0.55 + f.cohesion * 0.0045) * (1 - f.fatigue * 0.004);
+        let amount = 0;
+        if (melee) {
+          f.combatTargetId = target.id;
+          engaged[f.id] = 1;
+          engaged[target.id] = 1;
+          let power = readiness;
+          if (f.type === 'archers') power *= 0.45;
+          if (f.type === 'artillery') power *= 0.16;
+          if (f.type === 'cavalry') {
+            const square = target.stance === 'square' && target.cohesion > 35;
+            power *= square ? 0.29 : 1.15 + f.momentum * 1.7;
+            if (target.weapon === 'spear' && angleDistance(Math.atan2(f.y - target.y, f.x - target.x), target.angle) < 1.15) power *= 0.68;
+            if (f.momentum > 0.3 && !square) {
+              pressure[target.id] += dt * f.momentum * 0.85;
+              disruption[target.id] += dt * f.momentum * 1.5;
+            }
+          }
+          if (f.stance === 'column') power *= 0.78;
+          if (f.stance === 'square') power *= 0.75;
+          const incoming = Math.atan2(f.y - target.y, f.x - target.x);
+          const flank = angleDistance(incoming, target.angle);
+          if (flank > 1.6 && target.stance !== 'square') {
+            const rear = flank > 2.45;
+            power *= rear ? 1.65 : 1.3;
+            pressure[target.id] += dt * (rear ? 0.23 : 0.12) * tempo;
+            disruption[target.id] += dt * (rear ? 0.35 : 0.18);
+          }
+          power *= clamp(1 + (f.elevation - target.elevation) * 0.007, 0.65, 1.3);
+          amount = f.count * power * 0.0062 * dt * tempo;
+          if (f._impactClock <= 0) {
+            this._emit('impact', f, target, 0.5);
+            f._impactClock = 1.15;
+          }
+        } else if (f.range && f.ammo > 0 && f.reload <= 0 && f._moved < dt * 8) {
+          // Pick an exposed target; nearby friendly ranks may block a shot at the closest enemy.
+          let best = Infinity;
+          target = null;
+          for (const candidate of this.formations) {
+            if (candidate.team === f.team || !viable(candidate) || !this._canFire(f, candidate)) continue;
+            const range = distance(f, candidate);
+            if (range < best) { best = range; target = candidate; }
+          }
+          if (target) {
+            f.combatTargetId = target.id;
+            const range = distance(f, target);
+            const shotPower = {bow: 0.012, sling: 0.011, musket: 0.024, cannon: 0.14}[f.weapon] || 0;
+            const accuracy = clamp(1.15 - range / f.range * 0.65, 0.4, 1);
+            const elevation = clamp(1 + (f.elevation - target.elevation) * 0.004, 0.72, 1.22);
+            const square = target.stance === 'square' ? (f.weapon === 'cannon' ? 1.7 : 1.2) : 1;
+            const frontage = f.stance === 'column' ? 0.55 : f.stance === 'square' ? 0.4 : 1;
+            const cover = 1 - target.cover * (f.weapon === 'cannon' ? 0.6 : 0.9);
+            amount = f.count * shotPower * readiness * accuracy * elevation * square * frontage * cover * tempo;
+            pressure[target.id] += f.weapon === 'cannon' ? 2.2 : f.weapon === 'musket' ? 0.6 : 0.2;
+            disruption[target.id] += f.weapon === 'cannon' ? 2 : 0.4;
+            f.ammo--;
+            f.reload = f.reloadDuration;
+            f.fatigue = clamp(f.fatigue + 0.45, 0, 100);
+            const type = f.weapon === 'cannon' ? 'cannon' : f.weapon === 'musket' ? 'musket' : 'arrow';
+            this._emit(type, f, target, type === 'arrow' ? 0.85 : type === 'cannon' ? 1.1 : 0.6);
+          }
+        }
+        if (amount > 0 && target) {
+          if (f.status !== 'charging') f.status = 'attacking';
+          damage[target.id] += amount;
+          f._killFraction += amount;
+          const credited = Math.floor(f._killFraction);
+          f.kills += credited;
+          f._killFraction -= credited;
+        }
+      }
+
+      for (const f of this.formations) {
+        if (!viable(f)) continue;
+        const effectiveDamage = Math.min(f.count, damage[f.id]);
+        f._lossFraction += effectiveDamage;
+        const lost = Math.min(f.count, Math.floor(f._lossFraction));
+        f.count -= lost;
+        f._lossFraction -= lost;
+        const moving = f._moved > dt * 3;
+        if (effectiveDamage > 0) f._underFire = 5;
+        const threatened = engaged[f.id] || f._underFire > 0;
+        const resting = !moving && !threatened;
+        const roughness = clamp(1 - this.terrain.sample(f.x, f.y).speed, 0, 1);
+        f.fatigue = clamp(f.fatigue + dt * (moving ? (f.chargeTime > 0 ? 1.75 : 0.48) + roughness * 0.9 : engaged[f.id] ? 0.22 : -0.8), 0, 100);
+        f.cohesion = clamp(f.cohesion - effectiveDamage / Math.max(1, f.initial) * 40 - disruption[f.id] +
+          dt * (resting ? 0.7 : moving ? -(roughness * 0.55 + (f.chargeTime > 0 ? 0.19 : 0.04)) : -0.025), 0, 100);
+        const casualtyShock = effectiveDamage / Math.max(1, f.initial) * 126;
+        const moraleLoss = casualtyShock + pressure[f.id] + (engaged[f.id] ? dt * 0.026 * tempo : 0);
+        f.morale = clamp(f.morale - moraleLoss + (resting ? dt * 0.24 : 0), 0, 100);
+        if (f.count <= 0) {
+          f.count = 0; f.morale = 0; f.status = 'defeated';
+        } else if (f.morale <= 18 || f.count < f.initial * 0.23 || (f.cohesion < 14 && f.morale < 40)) {
+          f.status = 'routing'; f.command = 'route'; f.targetId = null;
+          f._path = []; f._pathClock = 0; f._plannedX = NaN;
+          for (const ally of this.formations) {
+            if (ally !== f && ally.team === f.team && viable(ally) && distance(ally, f) < 270) {
+              ally.morale = Math.max(0, ally.morale - 7);
+              ally.cohesion = Math.max(0, ally.cohesion - 5);
+            }
+          }
+        }
+      }
+      this._checkWinner();
+      if (!this.winner && this.time >= this.timeLimit) {
+        const strength = [0, 0];
+        for (const f of this.formations) if (viable(f)) strength[f.team] += f.count * (0.4 + f.morale / 250 + f.cohesion / 500);
+        const difference = Math.abs(strength[0] - strength[1]);
+        this.winner = difference < Math.max(strength[0], strength[1]) * 0.03 ? 'draw' : strength[0] > strength[1] ? 'friendly' : 'enemy';
+        this.resultReason = 'time_limit';
+      }
+    }
+
+    _checkWinner() {
+      const active = [false, false];
+      for (const f of this.formations) if (viable(f)) active[f.team] = true;
+      if (!active[0] && !active[1]) this.winner = 'draw';
+      else if (!active[0]) this.winner = 'enemy';
+      else if (!active[1]) this.winner = 'friendly';
+      if (this.winner) this.resultReason = 'army_routed';
+    }
+
+    getStats() {
+      const counts = [0, 0];
+      const morale = [0, 0];
+      const active = [0, 0];
+      const routed = [0, 0];
+      const fatigue = [0, 0];
+      const cohesion = [0, 0];
+      for (const f of this.formations) {
+        counts[f.team] += f.count;
+        morale[f.team] += f.count * f.morale;
+        fatigue[f.team] += f.count * f.fatigue;
+        cohesion[f.team] += f.count * f.cohesion;
+        if (viable(f)) active[f.team] += f.count;
+        if (f.status === 'routing') routed[f.team] += f.count;
+      }
+      return {
+        friendly: counts[0], enemy: counts[1],
+        friendlyInitial: this.friendlyInitial, enemyInitial: this.enemyInitial,
+        friendlyMorale: counts[0] ? morale[0] / counts[0] : 0,
+        enemyMorale: counts[1] ? morale[1] / counts[1] : 0,
+        friendlyFatigue: counts[0] ? fatigue[0] / counts[0] : 0,
+        enemyFatigue: counts[1] ? fatigue[1] / counts[1] : 0,
+        friendlyCohesion: counts[0] ? cohesion[0] / counts[0] : 0,
+        enemyCohesion: counts[1] ? cohesion[1] / counts[1] : 0,
+        friendlyActive: active[0], enemyActive: active[1],
+        friendlyRouted: routed[0], enemyRouted: routed[1],
+        time: this.time, winner: this.winner, timeLimit: this.timeLimit, resultReason: this.resultReason
+      };
+    }
+
+    snapshot() {
+      return {
+        ...this.getStats(),
+        formations: this.formations.map(f => Object.fromEntries(Object.entries(f).filter(([key]) => !key.startsWith('_')))),
+        effects: this.effects.map(effect => ({...effect}))
+      };
+    }
+  }
+
+  global.BattleEngine = BattleEngine;
+})(typeof window !== 'undefined' ? window : globalThis);
+
+</script>
+  <script>
+/* Field Command — dependency-free, instanced-by-regiment battlefield renderer. */
+(function () {
+  'use strict';
+
+  const WORLD_W = 1800;
+  const WORLD_H = 1200;
+  const COLORS = ['#23625a', '#a34735'];
+  const GL_COLORS = [[0.12, 0.35, 0.31], [0.62, 0.23, 0.16]];
+  const clamp = (v, lo, hi) => Math.max(lo, Math.min(hi, v));
+
+  function random(seed) {
+    return function () {
+      seed |= 0;
+      seed = seed + 0x6D2B79F5 | 0;
+      let t = Math.imul(seed ^ seed >>> 15, 1 | seed);
+      t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t;
+      return ((t ^ t >>> 14) >>> 0) / 4294967296;
+    };
+  }
+
+  function roundedRect(ctx, x, y, w, h, radius) {
+    const r = Math.min(radius, w / 2, h / 2);
+    ctx.beginPath();
+    ctx.moveTo(x + r, y);
+    ctx.arcTo(x + w, y, x + w, y + h, r);
+    ctx.arcTo(x + w, y + h, x, y + h, r);
+    ctx.arcTo(x, y + h, x, y, r);
+    ctx.arcTo(x, y, x + w, y, r);
+    ctx.closePath();
+  }
+
+  class BattleRenderer {
+    constructor(container) {
+      this.container = container;
+      this.view = { cx: 900, cy: 600, zoom: 1 };
+      this.width = 1;
+      this.height = 1;
+      this.dpr = Math.min(window.devicePixelRatio || 1, 2);
+      this.formations = [];
+      this.batches = new Map();
+      this.stats = { renderer: 'Canvas', drawnSoldiers: 0 };
+      this.scenario = {};
+      this.layers = [];
+      if (getComputedStyle(container).position === 'static') container.style.position = 'relative';
+      container.style.overflow = 'hidden';
+      this.terrainCanvas = this.createCanvas('battle-terrain');
+      this.troopCanvas = this.createCanvas('battle-troops');
+      this.overlayCanvas = this.createCanvas('battle-overlay');
+      this.terrainContext = this.terrainCanvas.getContext('2d', { alpha: false });
+      this.overlayContext = this.overlayCanvas.getContext('2d');
+      this.mapCanvas = document.createElement('canvas');
+      this.mapCanvas.width = WORLD_W * 2;
+      this.mapCanvas.height = WORLD_H * 2;
+      this.scarCanvas = document.createElement('canvas');
+      this.scarCanvas.width = WORLD_W;
+      this.scarCanvas.height = WORLD_H;
+      this.previousCounts = new Map();
+      this.lastRenderTime = 0;
+      this.spriteCache = new Map();
+      this.setupGL();
+      this.resize();
+      this.setScenario({ id: 'cannae' });
+      if (typeof ResizeObserver !== 'undefined') {
+        this.resizeObserver = new ResizeObserver(() => this.resize());
+        this.resizeObserver.observe(container);
+      }
+    }
+
+    createCanvas(className) {
+      const canvas = document.createElement('canvas');
+      canvas.className = className;
+      canvas.setAttribute('aria-hidden', 'true');
+      Object.assign(canvas.style, {
+        position: 'absolute', inset: '0', width: '100%', height: '100%',
+        pointerEvents: 'none', display: 'block'
+      });
+      this.container.appendChild(canvas);
+      this.layers.push(canvas);
+      return canvas;
+    }
+
+    setupGL() {
+      try {
+        const gl = this.troopCanvas.getContext('webgl', {
+          alpha: true, antialias: false, premultipliedAlpha: true,
+          depth: false, stencil: false, preserveDrawingBuffer: false
+        });
+        if (!gl) throw new Error('WebGL unavailable');
+        const vertex = `
+          precision highp float;
+          attribute vec2 a_offset;
+          uniform vec2 u_position;
+          uniform vec2 u_extent;
+          uniform vec2 u_camera;
+          uniform vec2 u_resolution;
+          uniform mediump vec2 u_rotation;
+          uniform float u_scale;
+          uniform float u_size;
+          uniform float u_time;
+          uniform float u_moving;
+          uniform float u_disorder;
+          varying mediump float v_shade;
+          void main() {
+            vec2 p = a_offset * u_extent;
+            p += vec2(sin(a_offset.x * 390.0 + u_time * 7.0),
+                      cos(a_offset.y * 350.0 + u_time * 7.0)) * u_moving * .24;
+            p += vec2(sin(a_offset.y * 593.0), cos(a_offset.x * 337.0))
+                 * u_extent * u_disorder * .07;
+            vec2 rotated = vec2(p.x * u_rotation.x - p.y * u_rotation.y,
+                                p.x * u_rotation.y + p.y * u_rotation.x);
+            vec2 screen = (u_position + rotated - u_camera) * u_scale;
+            gl_Position = vec4(screen.x * 2.0 / u_resolution.x,
+                              -screen.y * 2.0 / u_resolution.y, 0.0, 1.0);
+            gl_PointSize = u_size;
+            v_shade = .82 + fract(a_offset.x * 179.0 + a_offset.y * 293.0) * .28;
+          }
+        `;
+        const fragment = `
+          precision mediump float;
+          uniform vec3 u_color;
+          uniform mediump vec2 u_rotation;
+          uniform float u_kind;
+          uniform float u_detail;
+          varying mediump float v_shade;
+          float oval(vec2 p, vec2 r) {
+            return 1.0 - smoothstep(.87, 1.0, length(p / r));
+          }
+          float box(vec2 p, vec2 r) {
+            vec2 d = abs(p) - r;
+            return 1.0 - smoothstep(-.018, .018, max(d.x, d.y));
+          }
+          void main() {
+            vec2 p = (gl_PointCoord - vec2(.5)) * 2.0;
+            if (u_detail < .5) {
+              float d = length(p / vec2(.74, 1.0));
+              if (d > 1.0) discard;
+              float a = 1.0 - smoothstep(.72, 1.0, d);
+              gl_FragColor = vec4(u_color * v_shade * a, a);
+              return;
+            }
+            vec2 q = vec2(p.x * u_rotation.x + p.y * u_rotation.y,
+                         -p.x * u_rotation.y + p.y * u_rotation.x);
+            vec3 color = vec3(.17, .16, .12);
+            float a = oval(q - vec2(.08,.19), vec2(.43,.62)) * .25;
+            float body = oval(q - vec2(0.0,.1), vec2(.22,.35));
+            float head = oval(q - vec2(0.0,-.22), vec2(.20,.18));
+            float shield = oval(q - vec2(-.25,.08), vec2(.20,.28));
+            float weapon = box(q - vec2(.31,-.11), vec2(.027,.74));
+            float boots = max(oval(q - vec2(-.12,.49),vec2(.08,.18)),
+                              oval(q - vec2(.12,.49),vec2(.08,.18)));
+            if (u_kind > .5 && u_kind < 1.5) {
+              float horse = oval(q - vec2(0.0,.12),vec2(.31,.57));
+              horse = max(horse, oval(q - vec2(0.0,-.49),vec2(.16,.27)));
+              horse = max(horse, box(q - vec2(-.29,.19),vec2(.07,.31)));
+              horse = max(horse, box(q - vec2(.29,.19),vec2(.07,.31)));
+              color = mix(color,vec3(.31,.23,.15) * v_shade,horse);
+              a = max(a, horse);
+              body = oval(q - vec2(0.0,.09),vec2(.2,.23));
+              head = oval(q - vec2(0.0,-.14),vec2(.15,.14));
+              shield *= .7;
+              boots = 0.0;
+            } else if (u_kind > 1.5 && u_kind < 2.5) {
+              float bow = length((q-vec2(.12,-.05))/vec2(.34,.61));
+              weapon = (1.0-smoothstep(.06,.13,abs(bow-1.0))) * step(.12,q.x);
+              weapon = max(weapon,box(q-vec2(.13,-.05),vec2(.018,.57)));
+              shield = 0.0;
+            } else if (u_kind > 2.5 && u_kind < 3.5) {
+              weapon = box(q-vec2(.26,-.13),vec2(.038,.70));
+              shield = 0.0;
+            } else if (u_kind > 3.5 && u_kind < 4.5) {
+              float wheels = max(oval(q-vec2(-.38,.08),vec2(.13,.34)),
+                                 oval(q-vec2(.38,.08),vec2(.13,.34)));
+              float carriage = box(q-vec2(0.0,.21),vec2(.29,.27));
+              float barrel = box(q-vec2(0.0,-.17),vec2(.13,.62));
+              color = mix(color,vec3(.26,.21,.14),carriage);
+              color = mix(color,vec3(.13,.15,.13),max(wheels,barrel));
+              a = max(a,max(carriage,max(wheels,barrel)));
+              float glint=box(q-vec2(-.04,-.25),vec2(.025,.48));
+              color=mix(color,vec3(.48,.48,.35),glint);
+              if(a<.01)discard;
+              gl_FragColor=vec4(color*a,a);
+              return;
+            } else if (u_kind > 4.5) {
+              weapon = 0.0;
+              shield = 0.0;
+            }
+            color = mix(color,vec3(.13,.14,.11),boots); a=max(a,boots);
+            color = mix(color,u_color*v_shade,body); a=max(a,body);
+            color = mix(color,vec3(.38,.26,.14),weapon); a=max(a,weapon);
+            vec3 shieldColor = mix(u_color,vec3(.38,.29,.17),.30);
+            color = mix(color,shieldColor,shield); a=max(a,shield);
+            float shieldBoss=oval(q-vec2(-.25,.04),vec2(.07,.09))*step(.1,shield);
+            color=mix(color,vec3(.66,.59,.39),shieldBoss);
+            vec3 helmet = u_kind > 2.5 ? vec3(.19,.21,.18) : vec3(.60,.56,.43);
+            helmet *= .83 + .25 * clamp(-q.x-q.y,0.0,1.0);
+            color=mix(color,helmet,head); a=max(a,head);
+            if(a<.01)discard;
+            gl_FragColor=vec4(color*a,a);
+          }
+        `;
+        const compile = (source, type) => {
+          const shader = gl.createShader(type);
+          gl.shaderSource(shader, source);
+          gl.compileShader(shader);
+          if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
+            const error = gl.getShaderInfoLog(shader);
+            gl.deleteShader(shader);
+            throw new Error(error);
+          }
+          return shader;
+        };
+        const vs = compile(vertex, gl.VERTEX_SHADER);
+        const fs = compile(fragment, gl.FRAGMENT_SHADER);
+        const program = gl.createProgram();
+        gl.attachShader(program, vs);
+        gl.attachShader(program, fs);
+        gl.linkProgram(program);
+        gl.deleteShader(vs);
+        gl.deleteShader(fs);
+        if (!gl.getProgramParameter(program, gl.LINK_STATUS)) throw new Error('WebGL program unavailable');
+        this.gl = gl;
+        this.program = program;
+        this.buffer = gl.createBuffer();
+        this.uniforms = {};
+        for (const name of ['position', 'extent', 'camera', 'resolution', 'rotation', 'scale', 'size', 'time', 'moving', 'color', 'kind', 'detail', 'disorder']) {
+          this.uniforms[name] = gl.getUniformLocation(program, 'u_' + name);
+        }
+        this.offsetLocation = gl.getAttribLocation(program, 'a_offset');
+        gl.enable(gl.BLEND);
+        gl.blendFunc(gl.ONE, gl.ONE_MINUS_SRC_ALPHA);
+        this.stats.renderer = 'WebGL';
+        this.troopCanvas.addEventListener('webglcontextlost', event => {
+          event.preventDefault();
+          this.contextLost = true;
+        });
+        this.troopCanvas.addEventListener('webglcontextrestored', () => {
+          this.contextLost = false;
+          this.setupGL();
+          this.setFormations(this.formations);
+        });
+      } catch (_) {
+        // A context of another type cannot be acquired after a failed WebGL setup.
+        const replacement = document.createElement('canvas');
+        replacement.className = this.troopCanvas.className;
+        replacement.style.cssText = this.troopCanvas.style.cssText;
+        replacement.setAttribute('aria-hidden', 'true');
+        this.troopCanvas.replaceWith(replacement);
+        this.layers[1] = replacement;
+        this.troopCanvas = replacement;
+        this.gl = null;
+        this.troopContext = replacement.getContext('2d');
+        this.stats.renderer = 'Canvas';
+      }
+    }
+
+    resize() {
+      const rect = this.container.getBoundingClientRect();
+      this.width = Math.max(1, rect.width);
+      this.height = Math.max(1, rect.height);
+      this.dpr = Math.min(window.devicePixelRatio || 1, 2);
+      this.fitScale = Math.min(this.width / WORLD_W, this.height / WORLD_H);
+      for (const canvas of this.layers) {
+        const w = Math.round(this.width * this.dpr);
+        const h = Math.round(this.height * this.dpr);
+        if (canvas.width !== w) canvas.width = w;
+        if (canvas.height !== h) canvas.height = h;
+      }
+      if (this.gl) this.gl.viewport(0, 0, this.troopCanvas.width, this.troopCanvas.height);
+    }
+
+    get scale() { return this.fitScale * this.view.zoom; }
+
+    screenToWorld(clientX, clientY) {
+      const rect = this.container.getBoundingClientRect();
+      return {
+        x: (clientX - rect.left - this.width / 2) / this.scale + this.view.cx,
+        y: (clientY - rect.top - this.height / 2) / this.scale + this.view.cy
+      };
+    }
+
+    worldToScreen(x, y) {
+      return {
+        x: (x - this.view.cx) * this.scale + this.width / 2,
+        y: (y - this.view.cy) * this.scale + this.height / 2
+      };
+    }
+
+    zoomAt(clientX, clientY, factor) {
+      const before = this.screenToWorld(clientX, clientY);
+      this.view.zoom = clamp(this.view.zoom * factor, .65, 12);
+      const after = this.screenToWorld(clientX, clientY);
+      this.view.cx += before.x - after.x;
+      this.view.cy += before.y - after.y;
+      this.constrainView();
+    }
+
+    pan(dx, dy) {
+      this.view.cx -= dx / this.scale;
+      this.view.cy -= dy / this.scale;
+      this.constrainView();
+    }
+
+    constrainView() {
+      this.view.cx = clamp(this.view.cx, -150, WORLD_W + 150);
+      this.view.cy = clamp(this.view.cy, -150, WORLD_H + 150);
+    }
+
+    resetView() {
+      this.view.cx = WORLD_W / 2;
+      this.view.cy = WORLD_H / 2;
+      this.view.zoom = 1;
+    }
+
+    setScenario(scenario, terrain) {
+      this.scenario = scenario || {};
+      this.terrain = terrain || (window.FieldTerrain ? new window.FieldTerrain(this.scenario.id || 'cannae') : null);
+      this.scarCanvas.getContext('2d').clearRect(0, 0, WORLD_W, WORLD_H);
+      this.previousCounts.clear();
+      this.lastRenderTime = 0;
+      this.drawTerrain();
+      this.resetView();
+    }
+
+    setFormations(formations) {
+      this.formations = formations;
+      this.batches.clear();
+      this.previousCounts.clear();
+      let total = 0;
+      for (const f of formations) total += Math.max(0, Math.floor(f.initial || f.count || 0));
+      const offsets = new Float32Array(total * 2);
+      let start = 0;
+      for (const f of formations) {
+        const count = Math.max(0, Math.floor(f.initial || f.count || 0));
+        const aspect = Math.max(.15, (f.width || 100) / (f.depth || 60));
+        const columns = Math.max(1, Math.ceil(Math.sqrt(count * aspect)));
+        const rows = Math.max(1, Math.ceil(count / columns));
+        const rng = random((Number(f.id) || start + 1) * 173 + 42);
+        const points = new Float32Array(count * 2);
+        for (let i = 0; i < count; i++) {
+          points[i * 2] = ((i % columns) + .5 + (rng() - .5) * .15) / columns - .5;
+          points[i * 2 + 1] = (Math.floor(i / columns) + .5 + (rng() - .5) * .15) / rows - .5;
+        }
+        // Randomize draw order once so casualties thin a formation evenly.
+        for (let i = count - 1; i > 0; i--) {
+          const j = Math.floor(rng() * (i + 1));
+          const x = points[i * 2];
+          const y = points[i * 2 + 1];
+          points[i * 2] = points[j * 2];
+          points[i * 2 + 1] = points[j * 2 + 1];
+          points[j * 2] = x;
+          points[j * 2 + 1] = y;
+        }
+        offsets.set(points, start * 2);
+        this.batches.set(f.id, { start, initial: count, points, tile: null, tileCount: -1 });
+        start += count;
+      }
+      if (this.gl && !this.contextLost) {
+        this.gl.bindBuffer(this.gl.ARRAY_BUFFER, this.buffer);
+        this.gl.bufferData(this.gl.ARRAY_BUFFER, offsets, this.gl.STATIC_DRAW);
+      }
+    }
+
+    drawTerrain() {
+      const ctx = this.mapCanvas.getContext('2d');
+      const id = String(this.scenario.id || 'cannae').toLowerCase();
+      const frost = id.includes('auster');
+      const ridge = id.includes('hasting');
+      this.terrainVariant = frost ? 'austerlitz' : ridge ? 'hastings' : 'cannae';
+      const terrain = this.terrain || { hills: [], forests: [], waters: [], fords: [], muds: [] };
+      const rng = random(frost ? 610 : ridge ? 1066 : 216);
+      ctx.setTransform(2, 0, 0, 2, 0, 0);
+      ctx.clearRect(0, 0, WORLD_W, WORLD_H);
+      const ground = ctx.createLinearGradient(0, 0, WORLD_W * .4, WORLD_H);
+      ground.addColorStop(0, frost ? '#afb8a7' : ridge ? '#a3af81' : '#bbb98c');
+      ground.addColorStop(.5, frost ? '#c0c3af' : ridge ? '#b0b88b' : '#c5ba8b');
+      ground.addColorStop(1, frost ? '#bac0ab' : ridge ? '#a9b083' : '#bdb48a');
+      ctx.fillStyle = ground; ctx.fillRect(0, 0, WORLD_W, WORLD_H);
+
+      // Weathered fields and tracks are cosmetic. All impassable terrain below
+      // comes directly from the same FieldTerrain instance used by the engine.
+      const fieldColors = frost ? ['#b4b8a4','#aab09a','#c6c6af','#aeb8a3']
+        : ridge ? ['#9aa778','#b5b88a','#a7b484','#b9b68a']
+          : ['#b6b888','#c4b886','#aab07f','#c8bc91'];
+      for (let row = 0; row < 8; row++) {
+        for (let col = 0; col < 10; col++) {
+          const x = col * 205 - 90 + rng() * 55;
+          const y = row * 190 - 80 + rng() * 45;
+          const w = 165 + rng() * 100, h = 115 + rng() * 110;
+          ctx.save(); ctx.translate(x + w/2, y + h/2); ctx.rotate((rng()-.5)*.19-.08);
+          ctx.fillStyle = fieldColors[Math.floor(rng()*fieldColors.length)];
+          ctx.globalAlpha = .5; ctx.fillRect(-w/2,-h/2,w,h);
+          ctx.strokeStyle = '#5a6040'; ctx.globalAlpha = .1; ctx.lineWidth = .7;
+          for (let stripe=-h/2+5;stripe<h/2;stripe+=5+rng()*3) {
+            ctx.beginPath();ctx.moveTo(-w/2+3,stripe);ctx.lineTo(w/2-3,stripe+rng()*2);ctx.stroke();
+          }
+          ctx.restore();
+        }
+      }
+
+      // Lit relief follows the exact elliptical elevation footprint.
+      for (const hill of terrain.hills) {
+        ctx.save(); ctx.translate(hill.x,hill.y);ctx.scale(hill.rx,hill.ry);
+        const shade=ctx.createRadialGradient(-.29,-.32,.04,0,0,1);
+        shade.addColorStop(0,'rgba(232,222,167,.29)');
+        shade.addColorStop(.42,'rgba(217,211,157,.17)');
+        shade.addColorStop(.73,'rgba(91,102,55,.13)');
+        shade.addColorStop(1,'rgba(83,92,49,0)');
+        ctx.fillStyle=shade;ctx.beginPath();ctx.arc(0,0,1,0,Math.PI*2);ctx.fill();
+        ctx.restore();
+        const layers=Math.max(4,Math.round(hill.height/8));
+        for(let i=1;i<=layers;i++) {
+          const r=Math.sqrt(1-Math.pow(i/(layers+1),2/3));
+          ctx.beginPath();ctx.ellipse(hill.x,hill.y,hill.rx*r,hill.ry*r,0,0,Math.PI*2);
+          ctx.strokeStyle='rgba(74,89,45,.105)';ctx.lineWidth=.8;ctx.stroke();
+        }
+      }
+
+      for(const mud of terrain.muds) {
+        ctx.save();ctx.translate(mud.x,mud.y);ctx.scale(mud.rx,mud.ry);
+        const shade=ctx.createRadialGradient(0,0,.1,0,0,1);
+        shade.addColorStop(0,'rgba(91,81,53,.32)');shade.addColorStop(.7,'rgba(104,92,57,.19)');shade.addColorStop(1,'rgba(104,92,57,.07)');
+        ctx.fillStyle=shade;ctx.beginPath();ctx.arc(0,0,1,0,Math.PI*2);ctx.fill();ctx.restore();
+        for(let n=0;n<150;n++) {
+          const a=rng()*Math.PI*2,r=Math.sqrt(rng());
+          const x=mud.x+Math.cos(a)*mud.rx*r,y=mud.y+Math.sin(a)*mud.ry*r;
+          ctx.strokeStyle='rgba(78,74,52,.19)';ctx.lineWidth=.8;
+          ctx.beginPath();ctx.moveTo(x,y);ctx.lineTo(x+3+rng()*7,y-1);ctx.stroke();
+        }
+      }
+
+      for (let i=0;i<23000;i++) {
+        const x=rng()*WORLD_W,y=rng()*WORLD_H;
+        ctx.strokeStyle=rng()>.65?'rgba(232,223,167,.19)':'rgba(68,81,42,.12)';
+        ctx.lineWidth=.4+rng()*.5;
+        ctx.beginPath();ctx.moveTo(x,y);ctx.lineTo(x+.6+rng()*1.8,y-1-rng()*2.5);ctx.stroke();
+      }
+
+      const waterPath = water => {
+        ctx.beginPath();
+        if(water.kind==='pond')ctx.ellipse(water.x,water.y,water.rx,water.ry,0,0,Math.PI*2);
+        else water.points.forEach((p,i)=>i?ctx.lineTo(p.x,p.y):ctx.moveTo(p.x,p.y));
+      };
+      for(const water of terrain.waters) {
+        ctx.save();ctx.lineJoin='round';ctx.lineCap='round';
+        waterPath(water);
+        if(water.kind==='pond') {
+          ctx.fillStyle='#748f87';ctx.fill();ctx.strokeStyle='rgba(70,91,56,.28)';ctx.lineWidth=8;ctx.stroke();
+          waterPath(water);ctx.clip();
+          const ice=ctx.createLinearGradient(water.x-water.rx,water.y-water.ry,water.x+water.rx,water.y+water.ry);
+          ice.addColorStop(0,'#b6c7bc');ice.addColorStop(.55,'#94b0a8');ice.addColorStop(1,'#7d9c95');
+          ctx.fillStyle=ice;ctx.fillRect(water.x-water.rx,water.y-water.ry,water.rx*2,water.ry*2);
+          for(let i=0;i<42;i++) {
+            const x=water.x+(rng()-.5)*water.rx*2,y=water.y+(rng()-.5)*water.ry*2;
+            ctx.strokeStyle='rgba(223,232,210,.39)';ctx.lineWidth=.7;
+            ctx.beginPath();ctx.moveTo(x,y);ctx.lineTo(x+10+rng()*24,y-5-rng()*10);ctx.lineTo(x+31,y-7);ctx.stroke();
+          }
+        } else {
+          ctx.strokeStyle='rgba(74,97,63,.24)';ctx.lineWidth=water.width+10;ctx.stroke();
+          waterPath(water);ctx.strokeStyle='#759c92';ctx.lineWidth=water.width;ctx.stroke();
+          waterPath(water);ctx.strokeStyle='rgba(150,185,166,.38)';ctx.lineWidth=water.width*.51;ctx.stroke();
+          // Exactly the passable circular ford / water intersection.
+          for(const ford of terrain.fords) {
+            ctx.save();ctx.beginPath();ctx.arc(ford.x,ford.y,ford.r,0,Math.PI*2);ctx.clip();
+            waterPath(water);ctx.strokeStyle='#aab59a';ctx.lineWidth=water.width;ctx.stroke();
+            ctx.strokeStyle='rgba(225,222,173,.57)';ctx.lineWidth=1.5;
+            for(let i=-6;i<=6;i++){
+              ctx.beginPath();ctx.moveTo(ford.x-water.width*.35,ford.y+i*10);
+              ctx.lineTo(ford.x+water.width*.35,ford.y+i*10-3);ctx.stroke();
+            }
+            ctx.restore();
+          }
+          ctx.strokeStyle='rgba(206,227,202,.28)';ctx.lineWidth=.8;
+          for(let i=0;i<180;i++) {
+            const a=water.points[Math.floor(rng()*(water.points.length-1))];
+            const index=water.points.indexOf(a),b=water.points[index+1],t=rng();
+            const x=a.x+(b.x-a.x)*t+(rng()-.5)*water.width*.5,y=a.y+(b.y-a.y)*t;
+            ctx.beginPath();ctx.moveTo(x,y);ctx.lineTo(x-1,y+6+rng()*9);ctx.stroke();
+          }
+        }
+        ctx.restore();
+      }
+
+      for(const forest of terrain.forests) {
+        ctx.save();ctx.beginPath();ctx.ellipse(forest.x,forest.y,forest.rx,forest.ry,0,0,Math.PI*2);
+        ctx.fillStyle='rgba(63,82,40,.23)';ctx.fill();ctx.clip();
+        const trees=[];
+        for(let i=0;i<Math.round(forest.rx*forest.ry/50);i++) {
+          const a=rng()*Math.PI*2,r=Math.sqrt(rng());
+          trees.push({x:forest.x+Math.cos(a)*forest.rx*r,y:forest.y+Math.sin(a)*forest.ry*r,r:4+rng()*8});
+        }
+        trees.sort((a,b)=>a.y-b.y);
+        for(const tree of trees) {
+          const {x,y,r}=tree;
+          ctx.fillStyle='rgba(37,57,28,.2)';ctx.beginPath();ctx.ellipse(x+5,y+6,r*1.13,r*.7,-.6,0,Math.PI*2);ctx.fill();
+          const canopy=ctx.createRadialGradient(x-r*.3,y-r*.4,0,x,y,r);
+          canopy.addColorStop(0,frost?'#a7b09a':'#a1ad6d');canopy.addColorStop(.44,frost?'#7d9071':'#7b9156');canopy.addColorStop(1,frost?'#526c51':'#4d6c3d');
+          ctx.fillStyle=canopy;ctx.beginPath();ctx.arc(x,y,r,0,Math.PI*2);ctx.fill();
+          ctx.strokeStyle='rgba(37,55,27,.14)';ctx.lineWidth=.8;ctx.stroke();
+          if(frost){ctx.fillStyle='rgba(224,227,205,.45)';ctx.beginPath();ctx.ellipse(x-r*.2,y-r*.35,r*.58,r*.28,-.2,0,Math.PI*2);ctx.fill();}
+        }
+        ctx.restore();
+      }
+
+      for(const hill of terrain.hills) if(hill.height>40)this.mapLabel(ctx,hill.name.toUpperCase(),hill.x,hill.y-hill.ry*.68,13,.37);
+      for(const water of terrain.waters)if(water.kind==='pond')this.mapLabel(ctx,water.name.toUpperCase(),water.x,water.y+3,10,.45);
+      for(const ford of terrain.fords){
+        this.mapLabel(ctx,'FORD',ford.x+73,ford.y-15,10,.55);
+        ctx.strokeStyle='rgba(243,234,198,.75)';ctx.lineWidth=2;ctx.setLineDash([4,5]);
+        ctx.beginPath();ctx.moveTo(ford.x-46,ford.y);ctx.lineTo(ford.x+46,ford.y);ctx.stroke();ctx.setLineDash([]);
+      }
+      if(id==='cannae')this.mapLabel(ctx,'APULIAN PLAIN',990,145,15,.4);
+      const light=ctx.createLinearGradient(0,0,WORLD_W,WORLD_H);
+      light.addColorStop(0,'rgba(250,231,165,.07)');light.addColorStop(1,'rgba(31,50,31,.10)');
+      ctx.fillStyle=light;ctx.fillRect(0,0,WORLD_W,WORLD_H);
+      const vignette=ctx.createRadialGradient(900,600,350,900,600,1100);
+      vignette.addColorStop(0,'rgba(37,48,27,0)');vignette.addColorStop(1,'rgba(37,48,27,.19)');
+      ctx.fillStyle=vignette;ctx.fillRect(0,0,WORLD_W,WORLD_H);
+    }
+
+    mapLabel(ctx, text, x, y, size, opacity) {
+      ctx.save();
+      ctx.fillStyle = `rgba(66,73,52,${opacity})`;
+      ctx.textAlign = 'center';
+      ctx.font = `${size}px Georgia, serif`;
+      if ('letterSpacing' in ctx) ctx.letterSpacing = '3px';
+      ctx.fillText(text, x, y);
+      ctx.restore();
+    }
+
+    render(formations, selectedIds, opts) {
+      opts = opts || {};
+      selectedIds = selectedIds || new Set();
+      if (!this.batches.size && formations.length) this.setFormations(formations);
+      const scale = this.scale;
+      const ctx = this.terrainContext;
+      ctx.setTransform(this.dpr, 0, 0, this.dpr, 0, 0);
+      ctx.fillStyle = this.terrainVariant === 'austerlitz' ? '#bcbfab' : '#c3bea0';
+      ctx.fillRect(0, 0, this.width, this.height);
+      ctx.setTransform(scale * this.dpr, 0, 0, scale * this.dpr,
+        (this.width / 2 - this.view.cx * scale) * this.dpr,
+        (this.height / 2 - this.view.cy * scale) * this.dpr);
+      ctx.drawImage(this.mapCanvas, 0, 0, WORLD_W, WORLD_H);
+      this.updateScars(formations, opts.time || 0);
+      ctx.drawImage(this.scarCanvas, 0, 0, WORLD_W, WORLD_H);
+      if (this.gl && !this.contextLost) this.drawGL(formations, opts);
+      else if (this.troopContext) this.drawCanvasTroops(formations);
+      this.drawOverlay(formations, selectedIds, opts);
+    }
+
+    drawGL(formations, opts) {
+      const gl = this.gl;
+      const u = this.uniforms;
+      const scale = this.scale * this.dpr;
+      gl.clearColor(0, 0, 0, 0);
+      gl.clear(gl.COLOR_BUFFER_BIT);
+      gl.useProgram(this.program);
+      gl.bindBuffer(gl.ARRAY_BUFFER, this.buffer);
+      gl.enableVertexAttribArray(this.offsetLocation);
+      gl.vertexAttribPointer(this.offsetLocation, 2, gl.FLOAT, false, 0, 0);
+      gl.uniform2f(u.camera, this.view.cx, this.view.cy);
+      gl.uniform2f(u.resolution, this.troopCanvas.width, this.troopCanvas.height);
+      gl.uniform1f(u.scale, scale);
+      gl.uniform1f(u.time, (opts.time || 0));
+      let drawn = 0;
+      for (const f of formations) {
+        const batch = this.batches.get(f.id);
+        if (!batch) continue;
+        const count = clamp(Math.floor(f.count || 0), 0, batch.initial);
+        if (!count) continue;
+        const width = f.width || 100;
+        const depth = f.depth || 60;
+        // Engine angles describe facing direction; the frontage is perpendicular.
+        const angle = (f.angle || 0) + Math.PI / 2;
+        gl.uniform2f(u.position, f.x, f.y);
+        gl.uniform2f(u.extent, width, depth);
+        gl.uniform2f(u.rotation, Math.cos(angle), Math.sin(angle));
+        const color = GL_COLORS[f.team === 1 ? 1 : 0];
+        const fade = (f.status === 'routing' || f.status === 'routed' ? .77 : 1) * (1 - (f.fatigue || 0) * .0012);
+        gl.uniform3f(u.color, color[0] * fade, color[1] * fade, color[2] * fade);
+        const kind = this.soldierKind(f);
+        const pointSize = clamp(Math.sqrt(width * depth / Math.max(1, batch.initial)) * scale * (kind === 1 ? .98 : .84), 1.1 * this.dpr, 23 * this.dpr);
+        gl.uniform1f(u.size, pointSize);
+        gl.uniform1f(u.kind, kind);
+        gl.uniform1f(u.detail, pointSize / this.dpr >= 5 ? 1 : 0);
+        gl.uniform1f(u.disorder, clamp(1 - (f.cohesion == null ? 100 : f.cohesion) / 100, 0, 1));
+        gl.uniform1f(u.moving, !opts.paused && (f.status === 'moving' || f.status === 'charging') ? 1 : 0);
+        gl.drawArrays(gl.POINTS, batch.start, count);
+        drawn += count;
+      }
+      this.stats.drawnSoldiers = drawn;
+    }
+
+    soldierKind(f) {
+      if (f.type === 'artillery') return 5; // Each point is a crew member.
+      if (f.type === 'cavalry') return 1;
+      if (f.weapon === 'musket' || f.type === 'musketeers' || f.type === 'musket') return 3;
+      if (f.type === 'archers' || f.type === 'archer') return 2;
+      return 0;
+    }
+
+    soldierSprite(kind, team) {
+      const key = kind + ':' + team;
+      if (this.spriteCache.has(key)) return this.spriteCache.get(key);
+      const canvas = document.createElement('canvas');
+      canvas.width = canvas.height = 64;
+      const ctx = canvas.getContext('2d');
+      ctx.translate(32, 32);ctx.scale(28, 28);
+      const oval = (x, y, rx, ry, color) => {
+        ctx.fillStyle = color;ctx.beginPath();ctx.ellipse(x,y,rx,ry,0,0,Math.PI*2);ctx.fill();
+      };
+      const teamColor = COLORS[team === 1 ? 1 : 0];
+      oval(.1,.16,.43,.61,'rgba(24,28,18,.26)');
+      if (kind === 4) {
+        ctx.fillStyle='#58482e';ctx.fillRect(-.29,-.2,.58,.7);
+        oval(-.39,.04,.12,.35,'#303329');oval(.39,.04,.12,.35,'#303329');
+        ctx.fillStyle='#404639';ctx.fillRect(-.13,-.82,.26,1.1);
+        ctx.fillStyle='#94937a';ctx.fillRect(-.09,-.78,.045,.82);
+        ctx.fillStyle='#282c23';ctx.fillRect(-.14,-.83,.28,.09);
+      } else {
+        if(kind===1) {
+          oval(0,.12,.31,.56,'#685137');
+          oval(0,-.5,.15,.26,'#4f402e');
+          ctx.fillStyle='#45382b';ctx.fillRect(-.36,-.09,.10,.54);ctx.fillRect(.26,-.09,.10,.54);
+          oval(0,.09,.23,.23,teamColor);
+        } else {
+          oval(-.11,.49,.085,.16,'#333528');oval(.11,.49,.085,.16,'#333528');
+          oval(0,.12,.22,.34,teamColor);
+        }
+        ctx.strokeStyle='#665438';ctx.lineWidth=.047;ctx.lineCap='round';
+        if(kind===2) {
+          ctx.beginPath();ctx.ellipse(.12,-.05,.32,.58,0,-Math.PI/2,Math.PI/2);ctx.stroke();
+          ctx.lineWidth=.017;ctx.beginPath();ctx.moveTo(.12,-.63);ctx.lineTo(.12,.53);ctx.stroke();
+        } else if(kind<2||kind===3) {
+          ctx.beginPath();ctx.moveTo(.3,.58);ctx.lineTo(.3,-.89);ctx.stroke();
+          ctx.strokeStyle='#b6b49a';ctx.lineWidth=.035;
+          ctx.beginPath();ctx.moveTo(.3,-.59);ctx.lineTo(.3,-.9);ctx.stroke();
+        }
+        if(kind<2) {
+          oval(-.23,.06,.20,.27,teamColor);
+          ctx.strokeStyle='#a28d5b';ctx.lineWidth=.036;ctx.beginPath();ctx.ellipse(-.23,.06,.20,.27,0,0,Math.PI*2);ctx.stroke();
+          oval(-.23,.02,.056,.072,'#c0ac78');
+        }
+        oval(0,kind===1?-.14:-.21,kind===1?.15:.18,.16,kind>=3?'#30372d':'#9d987c');
+        oval(-.048,kind===1?-.18:-.26,.074,.046,kind>=3?'#596451':'#d0c4a1');
+      }
+      this.spriteCache.set(key,canvas);
+      return canvas;
+    }
+
+    updateScars(formations, time) {
+      const ctx = this.scarCanvas.getContext('2d');
+      if(time < this.lastRenderTime) {
+        ctx.clearRect(0,0,WORLD_W,WORLD_H);
+        this.previousCounts.clear();
+      }
+      for(const f of formations) {
+        const previous=this.previousCounts.get(f.id),batch=this.batches.get(f.id);
+        if(previous!=null && batch && previous>f.count) {
+          const angle=(f.angle||0)+Math.PI/2,c=Math.cos(angle),s=Math.sin(angle);
+          // Marks stay where losses occurred; they never move with the regiment.
+          for(let i=0;i<Math.min(24,previous-f.count);i++) {
+            const index=Math.min(batch.initial-1,f.count+i);
+            const px=batch.points[index*2]*(f.width||100),py=batch.points[index*2+1]*(f.depth||60);
+            const x=f.x+px*c-py*s,y=f.y+px*s+py*c;
+            ctx.save();ctx.translate(x,y);ctx.rotate((index*2.399)%Math.PI);
+            ctx.fillStyle=f.team===1?'rgba(89,47,31,.48)':'rgba(48,68,46,.48)';
+            ctx.fillRect(-1.3,-.55,2.6,1.1);ctx.restore();
+          }
+        }
+        this.previousCounts.set(f.id,f.count);
+      }
+      this.lastRenderTime=time;
+    }
+
+    drawCanvasTroops(formations) {
+      const ctx = this.troopContext;
+      ctx.setTransform(this.dpr, 0, 0, this.dpr, 0, 0);
+      ctx.clearRect(0, 0, this.width, this.height);
+      let drawn = 0;
+      for (const f of formations) {
+        const batch = this.batches.get(f.id);
+        if (!batch) continue;
+        const count = clamp(Math.floor(f.count || 0), 0, batch.initial);
+        if (!count) continue;
+        const width = f.width || 100;
+        const depth = f.depth || 60;
+        const spacing = Math.sqrt(width * depth / Math.max(1, batch.initial));
+        const kind=this.soldierKind(f);
+        const detailed=spacing*this.scale*(kind===1?.98:.84)>=5;
+        const rasterScale=detailed?Math.max(3,Math.min(8,Math.ceil(this.scale*1.3))):Math.max(3,1.5/Math.max(.2,spacing));
+        const sprite=detailed?this.soldierSprite(kind,f.team):null;
+        const position=this.worldToScreen(f.x,f.y);
+        drawn+=count;
+        if(position.x+width*this.scale<0 || position.y+width*this.scale<0 || position.x-width*this.scale>this.width || position.y-width*this.scale>this.height)continue;
+        // The fallback caches each regiment at an inspectable resolution.
+        // Rebuilding is needed only when the formation dimensions change.
+        if (!batch.tile || batch.tileWidth !== width || batch.tileDepth !== depth || batch.rasterScale!==rasterScale || batch.detailed!==detailed || batch.kind!==kind) {
+          const tile = batch.tile || document.createElement('canvas');
+          tile.width = Math.ceil(width * rasterScale) + 10;
+          tile.height = Math.ceil(depth * rasterScale) + 10;
+          const tctx = tile.getContext('2d');
+          tctx.fillStyle = COLORS[f.team === 1 ? 1 : 0];
+          const size = Math.max(1, spacing * rasterScale * (kind===1?.95:.82));
+          for (let i = 0; i < count; i++) {
+            const x = (batch.points[i * 2] + .5) * width * rasterScale + 5;
+            const y = (batch.points[i * 2 + 1] + .5) * depth * rasterScale + 5;
+            if(sprite)tctx.drawImage(sprite,x-size/2,y-size/2,size,size);
+            else tctx.fillRect(x - size / 2, y - size / 2, size, size);
+          }
+          batch.tile = tile;
+          batch.rasterScale = rasterScale;
+          batch.rasterSize = size;
+          batch.tileCount = count;
+          batch.tileWidth = width;
+          batch.tileDepth = depth;
+          batch.detailed=detailed;
+          batch.kind=kind;
+        } else if (batch.tileCount !== count) {
+          const tctx = batch.tile.getContext('2d');
+          const size = batch.rasterSize;
+          tctx.fillStyle = COLORS[f.team === 1 ? 1 : 0];
+          // Update only the changed soldiers, including when seeking a replay.
+          for (let i = Math.min(count, batch.tileCount); i < Math.max(count, batch.tileCount); i++) {
+            const x = (batch.points[i * 2] + .5) * width * batch.rasterScale + 5;
+            const y = (batch.points[i * 2 + 1] + .5) * depth * batch.rasterScale + 5;
+            if (count < batch.tileCount) tctx.clearRect(x - size / 2 - .25, y - size / 2 - .25, size + .5, size + .5);
+            else if(sprite)tctx.drawImage(sprite,x-size/2,y-size/2,size,size);
+            else tctx.fillRect(x - size / 2, y - size / 2, size, size);
+          }
+          batch.tileCount = count;
+        }
+        const pos = this.worldToScreen(f.x, f.y);
+        ctx.save();
+        ctx.translate(pos.x, pos.y);
+        ctx.rotate((f.angle || 0) + Math.PI / 2);
+        ctx.scale(this.scale, this.scale);
+        ctx.drawImage(batch.tile, -width / 2 - 5 / batch.rasterScale, -depth / 2 - 5 / batch.rasterScale,
+          batch.tile.width / batch.rasterScale, batch.tile.height / batch.rasterScale);
+        ctx.restore();
+      }
+      this.stats.drawnSoldiers = drawn;
+    }
+
+    drawBattleEffects(ctx, formations, opts) {
+      const scale=this.scale,time=opts.time||0;
+      const haze=(x,y,r,opacity,color)=>{
+        const p=this.worldToScreen(x,y),radius=Math.max(1,r*scale);
+        const gradient=ctx.createRadialGradient(p.x,p.y,0,p.x,p.y,radius);
+        gradient.addColorStop(0,`rgba(${color},${opacity})`);
+        gradient.addColorStop(.45,`rgba(${color},${opacity*.65})`);
+        gradient.addColorStop(1,`rgba(${color},0)`);
+        ctx.fillStyle=gradient;ctx.beginPath();ctx.arc(p.x,p.y,radius,0,Math.PI*2);ctx.fill();
+      };
+      for(const f of formations) {
+        if(!f.count)continue;
+        if(['moving','charging','routing'].includes(f.status)) {
+          const phase=(time*.65+f.id*.371)%1;
+          const behind=(f.depth||60)*.35+phase*18;
+          haze(f.x-Math.cos(f.angle)*behind,f.y-Math.sin(f.angle)*behind,
+            10+phase*14,(1-phase)*(f.type==='cavalry'?.21:.11),'168,151,109');
+        }
+        if(f.type==='artillery') {
+          const p=this.worldToScreen(f.x,f.y),angle=(f.angle||0)+Math.PI/2;
+          const guns=Math.max(1,Math.min(8,Math.floor(f.guns||f.initial/80||2)));
+          ctx.save();ctx.translate(p.x,p.y);ctx.rotate(angle);
+          const icon=this.soldierSprite(4,f.team),size=clamp(12*scale,5,34);
+          for(let i=0;i<guns;i++) {
+            const x=((i+.5)/guns-.5)*(f.width||100)*scale;
+            const y=-(f.depth||60)*scale*.22;
+            ctx.drawImage(icon,x-size/2,y-size/2,size,size);
+          }
+          ctx.restore();
+        }
+      }
+      for(const effect of (opts.effects||[])) {
+        const age=time-effect.time,life=effect.life||1;
+        if(age<0||age>life)continue;
+        const t=clamp(age/life,0,1),seed=Number(effect.id)||0;
+        const tx=effect.tx==null?effect.x:effect.tx,ty=effect.ty==null?effect.y:effect.ty;
+        const from=this.worldToScreen(effect.x,effect.y),to=this.worldToScreen(tx,ty);
+        if(effect.type==='arrow') {
+          const length=Math.hypot(to.x-from.x,to.y-from.y);
+          for(let i=0;i<5;i++) {
+            const flight=clamp(t*1.1-i*.025,0,1);
+            const sway=(i-2)*Math.max(1.5,scale*4);
+            const x=from.x+(to.x-from.x)*flight+sway;
+            const y=from.y+(to.y-from.y)*flight-Math.sin(flight*Math.PI)*Math.min(23,length*.14)+sway*.3;
+            const direction=Math.atan2(to.y-from.y-Math.cos(flight*Math.PI)*35,to.x-from.x);
+            ctx.strokeStyle=`rgba(68,61,42,${.8*(1-t*.4)})`;ctx.lineWidth=Math.max(.7,scale*.6);
+            ctx.beginPath();ctx.moveTo(x-Math.cos(direction)*Math.max(3,scale*3),y-Math.sin(direction)*Math.max(3,scale*3));ctx.lineTo(x,y);ctx.stroke();
+          }
+        } else if(effect.type==='musket'||effect.type==='cannon') {
+          const cannon=effect.type==='cannon';
+          if(t<.24) {
+            const flight=clamp(t/.24,0,1);
+            ctx.strokeStyle=cannon?'rgba(70,59,39,.84)':`rgba(253,234,176,${(1-t/.24)*.8})`;
+            ctx.lineWidth=cannon?Math.max(1.5,scale):.8;
+            ctx.beginPath();ctx.moveTo(from.x+(to.x-from.x)*Math.max(0,flight-.15),from.y+(to.y-from.y)*Math.max(0,flight-.15));
+            ctx.lineTo(from.x+(to.x-from.x)*flight,from.y+(to.y-from.y)*flight);ctx.stroke();
+            if(!cannon){ctx.fillStyle=`rgba(255,223,133,${1-t/.24})`;ctx.beginPath();ctx.arc(from.x,from.y,Math.max(1.8,scale*2.5),0,Math.PI*2);ctx.fill();}
+          }
+          for(let i=0;i<(cannon?5:3);i++) {
+            const drift=Math.sin(seed*1.3+i)*8;
+            haze(effect.x+age*7+drift,effect.y-age*5+Math.cos(i*2)*7,
+              (cannon?13:8)+t*(cannon?31:23),Math.pow(1-t,.7)*(cannon?.23:.17),'216,211,189');
+          }
+        } else if(effect.type==='impact') {
+          haze(tx,ty,5+t*24,(1-t)*.29,'112,98,69');
+          if(t<.5){const p=this.worldToScreen(tx,ty);ctx.strokeStyle=`rgba(133,108,63,${(.5-t)*.5})`;ctx.lineWidth=1;ctx.beginPath();ctx.arc(p.x,p.y,(3+t*18)*scale,0,Math.PI*2);ctx.stroke();}
+        }
+      }
+    }
+
+    drawOverlay(formations, selectedIds, opts) {
+      const ctx = this.overlayContext;
+      const scale = this.scale;
+      ctx.setTransform(this.dpr, 0, 0, this.dpr, 0, 0);
+      ctx.clearRect(0, 0, this.width, this.height);
+
+      for(const f of formations) {
+        if(!selectedIds.has(f.id)||!f.count||!(f.range>65))continue;
+        const p=this.worldToScreen(f.x,f.y),r=f.range*scale;
+        ctx.save();ctx.translate(p.x,p.y);
+        ctx.strokeStyle='rgba(241,238,197,.36)';ctx.lineWidth=1;ctx.setLineDash([4,7]);
+        ctx.beginPath();ctx.arc(0,0,r,0,Math.PI*2);ctx.stroke();ctx.setLineDash([]);
+        ctx.fillStyle='rgba(244,239,195,.035)';ctx.beginPath();ctx.moveTo(0,0);ctx.arc(0,0,r,(f.angle||0)-.5,(f.angle||0)+.5);ctx.closePath();ctx.fill();
+        ctx.restore();
+      }
+      this.drawBattleEffects(ctx,formations,opts);
+
+      // Orders are drawn underneath flags and the selection outline.
+      for (const f of formations) {
+        if (!selectedIds.has(f.id) || f.count <= 0) continue;
+        const target = f.targetId != null ? formations.find(other => other.id === f.targetId && other.count > 0) : null;
+        const tx = target ? target.x : f.targetX;
+        const ty = target ? target.y : f.targetY;
+        if (tx == null || ty == null || Math.hypot(tx - f.x, ty - f.y) < 8) continue;
+        const from = this.worldToScreen(f.x, f.y);
+        const to = this.worldToScreen(tx, ty);
+        const waypoints = Array.isArray(f._path) && f._path.length
+          ? f._path.filter(p => Number.isFinite(p.x) && Number.isFinite(p.y)).map(p => this.worldToScreen(p.x,p.y))
+          : [];
+        const attack = !!target;
+        ctx.save();
+        ctx.strokeStyle = attack ? 'rgba(131,51,38,.84)' : 'rgba(35,91,79,.83)';
+        ctx.lineWidth = 1.7;
+        ctx.setLineDash([5, 5]);
+        ctx.lineDashOffset = -(opts.time || 0) * 5;
+        ctx.beginPath(); ctx.moveTo(from.x, from.y);
+        for(const point of waypoints)ctx.lineTo(point.x,point.y);
+        ctx.lineTo(to.x,to.y);ctx.stroke();
+        ctx.setLineDash([]);
+        ctx.translate(to.x, to.y);
+        const last=waypoints.slice().reverse().find(p=>Math.hypot(p.x-to.x,p.y-to.y)>1)||from;
+        ctx.rotate(Math.atan2(to.y - last.y, to.x - last.x));
+        ctx.beginPath(); ctx.moveTo(-10, -5); ctx.lineTo(0, 0); ctx.lineTo(-10, 5); ctx.stroke();
+        if (attack) {
+          ctx.beginPath(); ctx.arc(0, 0, 12, 0, Math.PI * 2); ctx.stroke();
+        }
+        ctx.restore();
+      }
+
+      for (const f of formations) {
+        if (f.count <= 0) continue;
+        const pos = this.worldToScreen(f.x, f.y);
+        const selected = selectedIds.has(f.id);
+        const width = (f.width || 100) * scale;
+        const depth = (f.depth || 60) * scale;
+        const visualAngle = (f.angle || 0) + Math.PI / 2;
+        const projectedHalfHeight = (Math.abs(Math.sin(visualAngle)) * width + Math.abs(Math.cos(visualAngle)) * depth) / 2;
+        if (pos.x < -200 || pos.y < -200 || pos.x > this.width + 200 || pos.y > this.height + 200) continue;
+        const color = COLORS[f.team === 1 ? 1 : 0];
+        if (selected) {
+          ctx.save();
+          ctx.translate(pos.x, pos.y); ctx.rotate(visualAngle);
+          ctx.strokeStyle = 'rgba(255,247,216,.98)';
+          ctx.lineWidth = 2;
+          ctx.shadowColor = 'rgba(47,49,32,.3)'; ctx.shadowBlur = 3;
+          roundedRect(ctx, -width / 2 - 4, -depth / 2 - 4, width + 8, depth + 8, 3);
+          ctx.stroke();
+          ctx.shadowBlur = 0;
+          ctx.strokeStyle = color; ctx.lineWidth = .75;
+          roundedRect(ctx, -width / 2 - 6, -depth / 2 - 6, width + 12, depth + 12, 3);
+          ctx.stroke();
+          ctx.fillStyle='rgba(255,247,214,.92)';
+          ctx.beginPath();ctx.moveTo(-4,-depth/2-8);ctx.lineTo(0,-depth/2-14);ctx.lineTo(4,-depth/2-8);ctx.closePath();ctx.fill();
+          ctx.restore();
+        }
+
+        const flagX = pos.x;
+        const flagY = pos.y - Math.max(14, projectedHalfHeight + 7);
+        const flagW = selected ? 28 : 23;
+        const flagH = selected ? 22 : 19;
+        ctx.save();
+        ctx.lineWidth = 1;
+        ctx.strokeStyle = 'rgba(57,62,42,.7)';
+        ctx.beginPath(); ctx.moveTo(flagX, flagY + flagH / 2); ctx.lineTo(flagX, flagY + flagH / 2 + 8); ctx.stroke();
+        ctx.shadowColor = 'rgba(42,43,28,.25)'; ctx.shadowBlur = 5; ctx.shadowOffsetY = 2;
+        roundedRect(ctx, flagX - flagW / 2, flagY - flagH / 2, flagW, flagH, 3);
+        ctx.fillStyle = color; ctx.fill();
+        ctx.shadowBlur = 0; ctx.shadowOffsetY = 0;
+        ctx.strokeStyle = selected ? '#fff6da' : 'rgba(245,235,208,.7)';
+        ctx.lineWidth = selected ? 2 : 1; ctx.stroke();
+        ctx.translate(flagX, flagY);
+        ctx.strokeStyle = '#eee6cd'; ctx.lineWidth = 1.4;
+        ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+        ctx.beginPath();
+        if (f.type === 'artillery') {
+          ctx.moveTo(-5,1);ctx.lineTo(5,-2);ctx.moveTo(-4,-2);ctx.lineTo(5,-5);
+          ctx.moveTo(-3,3);ctx.arc(-3,3,2,0,Math.PI*2);ctx.moveTo(5,3);ctx.arc(3,3,2,0,Math.PI*2);
+        } else if (f.type === 'cavalry') {
+          ctx.moveTo(-5, 3); ctx.lineTo(0, -3); ctx.lineTo(5, 3);
+          ctx.moveTo(-5, -1); ctx.lineTo(0, -7); ctx.lineTo(5, -1);
+        } else if (f.weapon === 'musket') {
+          ctx.moveTo(-5,5);ctx.lineTo(5,-5);ctx.moveTo(-5,2);ctx.lineTo(-2,5);
+          ctx.moveTo(0,-3);ctx.lineTo(3,0);
+        } else if (f.type === 'archers' || f.type === 'archer') {
+          ctx.arc(-2, 0, 6, -Math.PI / 2, Math.PI / 2);
+          ctx.moveTo(-2, -6); ctx.lineTo(-2, 6);
+          ctx.moveTo(-6, 0); ctx.lineTo(7, 0); ctx.moveTo(4, -2); ctx.lineTo(7, 0); ctx.lineTo(4, 2);
+        } else {
+          ctx.moveTo(-4, 5); ctx.lineTo(4, -5);
+          ctx.moveTo(4, 5); ctx.lineTo(-4, -5);
+          ctx.moveTo(-5, 2); ctx.lineTo(-2, 5);
+          ctx.moveTo(2, 5); ctx.lineTo(5, 2);
+        }
+        ctx.stroke();
+        ctx.restore();
+
+        if (selected || this.view.zoom >= 1.8) {
+          const label = f.name || f.label || `${f.type === 'cavalry' ? 'Cavalry' : f.type === 'archers' ? 'Archers' : 'Infantry'} ${f.id + 1}`;
+          const textY = pos.y + Math.max(14, projectedHalfHeight + 13);
+          ctx.font = `${selected ? '600' : '500'} 10px "Inter", "Arial", sans-serif`;
+          const textWidth = ctx.measureText(label).width;
+          ctx.fillStyle = selected ? 'rgba(36,55,43,.89)' : 'rgba(237,228,199,.88)';
+          roundedRect(ctx, pos.x - textWidth / 2 - 7, textY - 10, textWidth + 14, 17, 3);
+          ctx.fill();
+          ctx.textAlign = 'center';
+          ctx.fillStyle = selected ? '#f1ead3' : '#414b36';
+          ctx.fillText(label, pos.x, textY + 2);
+          if (selected) {
+            const normalized = (f.morale == null ? 1 : f.morale > 1 ? f.morale / 100 : f.morale);
+            ctx.fillStyle = 'rgba(38,49,35,.22)';
+            ctx.fillRect(pos.x - 21, textY + 11, 42, 3);
+            ctx.fillStyle = normalized < .3 ? '#a15b3d' : '#397366';
+            ctx.fillRect(pos.x - 21, textY + 11, 42 * clamp(normalized, 0, 1), 3);
+          }
+        }
+      }
+
+      const rect = opts.selectionRect;
+      if (rect) {
+        ctx.fillStyle = 'rgba(238,240,204,.14)';
+        ctx.strokeStyle = '#f6f1d7'; ctx.lineWidth = 1;
+        ctx.fillRect(rect.x, rect.y, rect.w, rect.h);
+        ctx.strokeRect(rect.x + .5, rect.y + .5, rect.w, rect.h);
+      }
+
+      if (this.width > 640) {
+        ctx.save();
+        ctx.translate(this.width - 41, 45);
+        ctx.fillStyle = 'rgba(61,78,49,.57)';
+        ctx.strokeStyle = 'rgba(61,78,49,.36)';
+        ctx.lineWidth = .75;
+        ctx.font = '9px Georgia, serif'; ctx.textAlign = 'center';
+        ctx.fillText('N', 0, -20);
+        ctx.beginPath(); ctx.arc(0, 1, 12, 0, Math.PI * 2); ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(0, -15); ctx.lineTo(4, 6); ctx.lineTo(0, 2); ctx.lineTo(-4, 6); ctx.closePath(); ctx.fill();
+        ctx.beginPath(); ctx.moveTo(0, 14); ctx.lineTo(0, 2); ctx.moveTo(-15, 1); ctx.lineTo(15, 1); ctx.stroke();
+        ctx.restore();
+      }
+    }
+
+    destroy() {
+      if (this.resizeObserver) this.resizeObserver.disconnect();
+      if (this.gl) {
+        this.gl.deleteBuffer(this.buffer);
+        this.gl.deleteProgram(this.program);
+      }
+      for (const canvas of this.layers) canvas.remove();
+      this.batches.clear();
+    }
+  }
+
+  window.BattleRenderer = BattleRenderer;
+})();
+
+</script>
+  <script>
+(function () {
+  'use strict';
+  const $ = id => document.getElementById(id);
+  const format = n => Math.round(n).toLocaleString('en-US');
+  const clock = t => `${Math.floor(t / 60).toString().padStart(2, '0')}:${Math.floor(t % 60).toString().padStart(2, '0')}`;
+  const paths = {
+    map: '<path d="m3 5 6-2 6 2 6-2v16l-6 2-6-2-6 2V5Z"/><path d="M9 3v16M15 5v16"/>',
+    flag: '<path d="M5 21V3m0 1c5-4 9 4 15 0v10c-6 4-10-4-15 0"/>',
+    play: '<path d="m8 4 12 8-12 8V4Z"/>',
+    pause: '<path d="M8 4v16M16 4v16"/>',
+    restart: '<path d="M3 11a9 9 0 1 1 2.6 7M3 4v7h7"/>',
+    replay: '<path d="M3 10a9 9 0 1 1 2 8M3 4v6h6"/><path d="m10 8 6 4-6 4V8Z"/>',
+    fit: '<path d="M8 3H3v5m13-5h5v5M3 16v5h5m8 0h5v-5"/><path d="M9 12h6m-3-3v6"/>',
+    move: '<path d="M12 3v18M3 12h18M8 7l4-4 4 4M8 17l4 4 4-4M7 8l-4 4 4 4m10-8 4 4-4 4"/>',
+    shield: '<path d="M12 3 3 7v5c0 5 9 9 9 9s9-4 9-9V7L12 3Z"/><path d="M12 7v10"/>',
+    swords: '<path d="m4 3 17 17M3 4l1 5 5 1M3 21l5-5m8-8 5-5-1 5-3 1M4 15l5 5m6-5 5 5"/>',
+    infantry: '<path d="M12 2v20M8 7l4-5 4 5M7 12h10"/><path d="M4 14v4c0 2 3 4 3 4s3-2 3-4v-4H4Z"/>',
+    cavalry: '<path d="m7 21 1-6-3-3 3-6 4-1 2-3 1 4 4 5v10H7Z"/><path d="m8 9 3 2M12 6l-1 3M11 21v-5l3-4"/>',
+    archers: '<path d="M7 2c14 5 14 15 0 20l4-10-4-10ZM3 12h18m-4-4 4 4-4 4"/>',
+    musket: '<path d="m4 21 4-4-2-2 3-4 3 1L20 3m-8 9 2 2 7-9M3 18l3 3M9 11l3 3"/>',
+    artillery: '<circle cx="8" cy="17" r="4"/><path d="m3 11 16-6 2 4-15 6m5 3 9 3M8 13v8m-4-4h8"/>'
+  };
+  const icon = name => `<svg viewBox="0 0 24 24" aria-hidden="true">${paths[name] || paths.infantry}</svg>`;
+  document.querySelectorAll('[data-icon]').forEach(el => el.innerHTML = icon(el.dataset.icon));
+
+  const map = $('map-container');
+  let renderer;
+  try { renderer = new BattleRenderer(map); }
+  catch (error) { map.innerHTML = '<p style="padding:40px">The battlefield could not start. Please try a browser with Canvas support.</p>'; console.error(error); return; }
+  let engine, scenario, running = false, started = false, speed = 1;
+  const RECORD_INTERVAL = .25;
+  let selected = new Set(), snapshots = [], nextSnapshot = RECORD_INTERVAL;
+  let replayMode = false, replayPlaying = false, replayCursor = 0, replayTime = 0;
+  let pointer = null, selectionRect = null, lastFrame = 0, accumulator = 0;
+  let uiElapsed = 0, frameCount = 0, fpsElapsed = 0, toastTimer;
+  let savedRunning = false;
+  const cardNodes = new Map();
+  const isViable = f => f.count > 0 && !['routing', 'defeated'].includes(f.status);
+  function currentFormations() {
+    if (!replayMode) return engine.formations;
+    const index = Math.min(Math.floor(replayCursor), snapshots.length - 1);
+    const first = snapshots[index], next = snapshots[Math.min(index + 1, snapshots.length - 1)];
+    const fraction = replayCursor - index;
+    return first.formations.map((f, i) => {
+      const n = next.formations[i];
+      const deltaAngle = Math.atan2(Math.sin(n.angle - f.angle), Math.cos(n.angle - f.angle));
+      return {...f, x:f.x+(n.x-f.x)*fraction, y:f.y+(n.y-f.y)*fraction,
+        angle:f.angle+deltaAngle*fraction, count:Math.round(f.count+(n.count-f.count)*fraction),
+        width:f.width+(n.width-f.width)*fraction, depth:f.depth+(n.depth-f.depth)*fraction,
+        morale:f.morale+(n.morale-f.morale)*fraction,
+        fatigue:(f.fatigue||0)+((n.fatigue||0)-(f.fatigue||0))*fraction,
+        cohesion:(f.cohesion??100)+((n.cohesion??100)-(f.cohesion??100))*fraction};
+    });
+  }
+
+  function setReplayTime(time) {
+    replayTime = Math.max(snapshots[0].time,Math.min(snapshots[snapshots.length-1].time,time));
+    let lo=0, hi=snapshots.length-1;
+    while(lo<hi){const mid=Math.ceil((lo+hi)/2);if(snapshots[mid].time<=replayTime)lo=mid;else hi=mid-1;}
+    const next=Math.min(lo+1,snapshots.length-1),span=snapshots[next].time-snapshots[lo].time;
+    replayCursor=lo+(span>0?(replayTime-snapshots[lo].time)/span:0);
+  }
+
+  function currentEffects() {
+    if(!replayMode)return engine.effects||[];
+    const i=Math.floor(replayCursor), seen=new Set();
+    return [...(snapshots[i].effects||[]),...(snapshots[Math.min(i+1,snapshots.length-1)].effects||[])].filter(e=>{
+      if(seen.has(e.id)||replayTime<e.time||replayTime>e.time+e.life)return false;
+      seen.add(e.id);return true;
+    });
+  }
+  const unitRole=f=>f.type==='artillery'?'Artillery crew':f.weapon==='musket'?'Musket infantry':f.type==='cavalry'?'Cavalry':f.weapon==='sling'?'Slingers':f.weapon==='bow'?'Archers':'Infantry';
+
+  function toast(message) {
+    $('toast').textContent = message;
+    $('toast').classList.add('visible');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => $('toast').classList.remove('visible'), 2600);
+  }
+
+  function createCards() {
+    $('unit-roster').replaceChildren(); cardNodes.clear();
+    engine.formations.filter(f => f.team === 0).forEach(f => {
+      const button = document.createElement('button');
+      button.className = 'unit-card'; button.dataset.id = f.id;
+      button.innerHTML = `<span class="unit-top"><span class="unit-symbol">${icon(f.weapon==='musket'?'musket':f.type)}</span><span class="unit-count"></span></span><span class="unit-name"></span><span class="unit-status"></span><span class="morale-track"><span></span></span>`;
+      button.querySelector('.unit-name').textContent = f.name;
+      button.addEventListener('click', event => {
+        if (replayMode) return;
+        if (!isViable(f)) { toast('This formation has left the fight.'); return; }
+        selectIds([f.id], event.shiftKey || event.metaKey || event.ctrlKey);
+      });
+      cardNodes.set(f.id, button); $('unit-roster').append(button);
+    });
+  }
+
+  function loadBattle(id, total = +$('army-size').value) {
+    scenario = BATTLES.find(s => s.id === id) || BATTLES[0];
+    engine = new BattleEngine(scenario, total);
+    running = false; started = false; replayMode = false; replayPlaying = false;
+    selected.clear(); accumulator = 0; replayCursor = 0; replayTime = 0;
+    snapshots = [engine.snapshot()]; nextSnapshot = RECORD_INTERVAL;
+    $('replay-tray').hidden = true; $('result-card').hidden = true;
+    $('army-size').value = total; $('size-value').textContent = format(total);
+    const squareOption=$('formation-select').querySelector('option[value="square"]');
+    squareOption.hidden=scenario.id!=='austerlitz';squareOption.disabled=scenario.id!=='austerlitz';
+    squareOption.textContent='Square · muskets';
+    $('formation-select').value='line';
+    const copy = {'era':scenario.era,'battle-name':scenario.name,'location':scenario.location,'commander':scenario.commander,'army-name':scenario.friendly,'briefing':scenario.briefing,'history':scenario.history,'friendly-label':scenario.friendly.toUpperCase(),'enemy-label':scenario.enemy.toUpperCase(),'map-kicker':scenario.war,'map-title':scenario.mapTitle};
+    Object.entries(copy).forEach(([id,text]) => $(id).textContent = text);
+    renderer.setScenario(scenario,engine.terrain); renderer.setFormations(engine.formations); renderer.resetView();
+    createCards(); updateUI();
+    // A read-only status surface for browser verification and diagnostics.
+    window.fieldCommand = {
+      get engine() { return engine; }, get renderer() { return renderer; },
+      get selected() { return [...selected]; }, get running() { return running; },
+      get recordingLength() { return snapshots.length; }, get replayMode() { return replayMode; },
+      get replayCursor() { return replayCursor; }
+    };
+  }
+
+  function selectIds(ids, additive = false) {
+    if (replayMode || engine.winner) return;
+    if (!additive) selected.clear();
+    ids.forEach(id => { if (additive && selected.has(id)) selected.delete(id); else selected.add(id); });
+    $('map-hint').hidden = true;
+    updateUI();
+  }
+
+  function all() {
+    if (replayMode || engine.winner) return;
+    selectIds(engine.formations.filter(f => f.team === 0 && isViable(f)).map(f => f.id));
+  }
+
+  function requireSelection() {
+    if (replayMode) { toast('Return to battle to issue orders.'); return false; }
+    if (engine.winner) return false;
+    for (const id of selected) if (!isViable(engine.formations.find(f => f.id === id))) selected.delete(id);
+    if (!selected.size) { toast('Select a formation first, or press A to select all.'); return false; }
+    return true;
+  }
+
+  function command(action) {
+    if (!requireSelection()) return;
+    if (action === 'hold') { engine.hold([...selected]); toast(`${selected.size} formation${selected.size > 1 ? 's' : ''} holding position.`); }
+    if (action === 'charge') { engine.charge([...selected]); toast('Charge ordered. Cavalry moves fastest.'); }
+    if (action === 'move') toast('Click open ground to move. Click an enemy to attack.');
+    updateUI();
+  }
+
+  function toggleRunning() {
+    if (replayMode) {
+      if (replayCursor >= snapshots.length - 1) setReplayTime(0);
+      replayPlaying = !replayPlaying; updateUI(); return;
+    }
+    if (engine.winner) return;
+    running = !running; started = true; accumulator = 0;
+    updateUI();
+    if (!running) toast('Tactical pause. You can still give orders.');
+  }
+
+  function recordSnapshot(force = false) {
+    if (engine.time >= nextSnapshot || force) {
+      if(!force || engine.time>snapshots[snapshots.length-1].time+.001) snapshots.push(engine.snapshot());
+      nextSnapshot = (Math.floor(engine.time/RECORD_INTERVAL)+1)*RECORD_INTERVAL;
+    }
+  }
+
+  function finishBattle() {
+    running = false; recordSnapshot(true);
+    const won = engine.winner === 'friendly';
+    $('result-title').textContent = engine.winner === 'draw' ? 'A hard-fought draw' : won ? 'The field is yours.' : 'Your army retreats.';
+    const stats = engine.getStats();
+    $('result-description').textContent = `${stats.resultReason==='time_limit'?'Time limit reached; remaining combat strength decides the field. ':''}${clock(engine.time)} on the field. ${format(stats.friendly)} of your ${format(stats.friendlyInitial)} soldiers survived, including those who retreated.`;
+    $('result-card').hidden = false;
+    selected.clear(); updateUI();
+  }
+
+  function openReplay() {
+    if (snapshots.length < 2) return;
+    savedRunning = running; running = false; replayMode = true; replayPlaying = true; replayCursor = 0; replayTime = 0;
+    $('result-card').hidden = true; $('replay-tray').hidden = false;
+    $('replay-scrub').max = snapshots.length - 1;
+    updateUI();
+  }
+
+  function exitReplay() {
+    replayMode = false; replayPlaying = false; running = savedRunning && !engine.winner;
+    $('replay-tray').hidden = true;
+    if (engine.winner) $('result-card').hidden = false;
+    accumulator = 0; updateUI();
+  }
+
+  function updateUI() {
+    const formations = currentFormations();
+    const stats = replayMode ? snapshots[Math.floor(replayCursor)] : engine.getStats();
+    const friendly = formations.filter(f => f.team === 0).reduce((s,f) => s + f.count, 0);
+    const enemy = formations.filter(f => f.team === 1).reduce((s,f) => s + f.count, 0);
+    $('friendly-count').textContent = format(friendly); $('enemy-count').textContent = format(enemy);
+    $('friendly-count').title = 'Surviving soldiers, including formations in retreat';
+    $('enemy-count').title = 'Surviving soldiers, including formations in retreat';
+    $('balance-fill').style.width = `${100 * friendly / Math.max(1, friendly + enemy)}%`;
+    $('battle-clock').textContent = clock(replayMode?replayTime:stats.time);
+    $('phase-label').textContent = replayMode ? 'Battle replay' : engine.winner ? 'Battle complete' : running ? 'In battle' : started ? 'Tactical pause' : 'Deployment';
+    $('phase-dot').classList.toggle('running', running || replayPlaying);
+    $('play-label').textContent = replayMode ? (replayPlaying ? 'Pause replay' : 'Play replay') : running ? 'Pause battle' : engine.winner ? 'Battle complete' : started ? 'Resume battle' : 'Begin battle';
+    $('play-button').querySelector('.icon').innerHTML = icon(running || (replayMode && replayPlaying) ? 'pause' : 'play');
+    $('play-button').disabled = !!engine.winner && !replayMode;
+    $('replay-button').disabled = snapshots.length < 2 || replayMode;
+    const selectedFormations = formations.filter(f => selected.has(f.id) && isViable(f));
+    $('selection-info').textContent = replayMode ? 'Watching your recorded battle' : selectedFormations.length ? `${selectedFormations.length===1?selectedFormations[0].name:selectedFormations.length+' selected'} · ${format(selectedFormations.reduce((s,f) => s + f.count, 0))} soldiers` : 'Select a formation to give an order';
+    updateCondition(selectedFormations);
+    for (const f of formations.filter(f => f.team === 0)) {
+      const card = cardNodes.get(f.id);
+      card.classList.toggle('selected', selected.has(f.id) && !replayMode);
+      card.classList.toggle('routing', f.status === 'routing'); card.classList.toggle('defeated', f.status === 'defeated');
+      card.setAttribute('aria-pressed', String(selected.has(f.id) && !replayMode));
+      card.setAttribute('aria-label', `${f.name}, ${format(f.count)} soldiers, ${f.status}, morale ${Math.round(f.morale)} percent`);
+      card.title = `${f.name} · ${unitRole(f)}\nMorale ${Math.round(f.morale)}% · Cohesion ${Math.round(f.cohesion??100)}% · Fatigue ${Math.round(f.fatigue||0)}%\n${f.status} · ${f.terrain||'Open ground'}\nShift-click to add to selection`;
+      card.querySelector('.unit-count').textContent = format(f.count);
+      card.querySelector('.unit-status').textContent = f.status === 'holding' ? unitRole(f) : f.status;
+      card.querySelector('.morale-track span').style.width = `${Math.max(0, Math.min(100, f.morale))}%`;
+      card.disabled = replayMode || !!engine.winner;
+    }
+    for (const id of ['move-order','hold-order','charge-order','formation-select','select-all']) $(id).disabled = replayMode || !!engine.winner;
+    if (selectedFormations.length === 1) $('formation-select').value = selectedFormations[0].stance;
+    if (replayMode) {
+      $('replay-scrub').value = Math.floor(replayCursor);
+      $('replay-time').textContent = clock(replayTime);
+      $('replay-play').innerHTML = icon(replayPlaying ? 'pause' : 'play');
+      $('replay-play').setAttribute('aria-label', replayPlaying ? 'Pause recording' : 'Play recording');
+    }
+  }
+
+  function updateCondition(formations) {
+    $('condition-panel').hidden=!formations.length||replayMode;
+    if(!formations.length||replayMode)return;
+    const weight=formations.reduce((n,f)=>n+f.count,0)||1;
+    const average=(key,def)=>formations.reduce((n,f)=>n+(f[key]??def)*f.count,0)/weight;
+    for(const [name,def] of [['morale',100],['cohesion',100],['fatigue',0]]){
+      const value=Math.max(0,Math.min(100,average(name,def)));
+      $('condition-'+name).textContent=Math.round(value)+'%';
+      $('condition-'+name+'-bar').style.width=value+'%';
+    }
+    const ranged=formations.filter(f=>f.maxAmmo>0);
+    $('condition-ammo').textContent=ranged.length?`${Math.min(...ranged.map(f=>f.ammo))} volleys${ranged.length>1?' minimum':' left'}`:'Melee weapons';
+    const reload=ranged.length?Math.max(...ranged.map(f=>(f.reload||0)*(1+(f.fatigue||0)*.006))):0;
+    $('condition-reload').textContent=ranged.length?(reload>.1?`Reloading · ${reload.toFixed(1)}s`:ranged.every(f=>f.ammo<=0)?'Out of ammunition':'Ready to fire'):formations.length===1?unitRole(formations[0]):'Mixed formations';
+    const terrains=new Set(formations.map(f=>f.terrain||'Open ground'));
+    $('condition-terrain').textContent=terrains.size===1?[...terrains][0]:'Mixed terrain';
+    const cover=Math.round(average('cover',0)*100),elevation=Math.round(average('elevation',0));
+    $('condition-cover').textContent=`${cover?cover+'% cover':'No cover'} · ${elevation} m elevation`;
+    const fatigue=average('fatigue',0),cohesion=average('cohesion',100);
+    $('condition-advice').textContent=fatigue>60?'Tired troops lose speed and fighting strength. Hold away from combat to recover.':cohesion<55?'Ranks are disordered. Give this formation time to regroup.':ranged.length&&ranged.every(f=>f.ammo<=0)?'Ammunition is spent. Protect this formation or use it in close combat.':formations.some(f=>f.terrainType==='forest')?'Woodland provides cover, but slows movement and disrupts cavalry.':formations.some(f=>f.type==='artillery')?'Guns need a clear firing lane. Protect their crews from cavalry.':formations.some(f=>f.type==='cavalry')?'Build speed before contact. Rear attacks work best against tired, disordered troops.':'Keep your formations rested and protect their flanks. Rest restores cohesion.';
+  }
+
+  function hitFormation(x, y) {
+    let best = null, bestDistance = Infinity;
+    const screen = renderer.worldToScreen(x,y);
+    for (const f of engine.formations) {
+      if (!isViable(f)) continue;
+      const p = renderer.worldToScreen(f.x,f.y), a = f.angle + Math.PI/2;
+      const halfH = (Math.abs(Math.sin(a))*f.width + Math.abs(Math.cos(a))*f.depth)*renderer.scale/2;
+      const flagY = p.y - Math.max(14,halfH+7);
+      const d = Math.hypot(screen.x-p.x,screen.y-flagY);
+      if (Math.abs(screen.x-p.x)<=18 && Math.abs(screen.y-flagY)<=15 && d<bestDistance) {best=f;bestDistance=d;}
+    }
+    if (best) return best;
+    for (const f of engine.formations) {
+      if (!isViable(f)) continue;
+      const dx = x - f.x, dy = y - f.y;
+      const cos = Math.cos(f.angle), sin = Math.sin(f.angle);
+      const localX = cos * dx + sin * dy;
+      const localY = -sin * dx + cos * dy;
+      // Formation fronts are perpendicular to the direction of travel.
+      const d = Math.hypot(dx,dy);
+      if (Math.abs(localX) < f.depth / 2 + 24 && Math.abs(localY) < f.width / 2 + 24 && d < bestDistance) { best = f; bestDistance = d; }
+    }
+    return best;
+  }
+
+  map.addEventListener('pointerdown', event => {
+    if (event.target.closest('button,input,.army-score,.result-card')) return;
+    map.focus({preventScroll:true});
+    const rect = map.getBoundingClientRect();
+    pointer = {id:event.pointerId,x:event.clientX,y:event.clientY,lastX:event.clientX,lastY:event.clientY,startX:event.clientX-rect.left,startY:event.clientY-rect.top,button:event.button,shift:event.shiftKey,touch:event.pointerType==='touch',moved:false};
+    map.setPointerCapture(event.pointerId);
+    event.preventDefault();
+  });
+  map.addEventListener('pointermove', event => {
+    if (!pointer || pointer.id !== event.pointerId) return;
+    const dx = event.clientX-pointer.x, dy = event.clientY-pointer.y;
+    if (Math.hypot(dx,dy)>5) pointer.moved = true;
+    if (pointer.moved) {
+      if (pointer.button > 0 || pointer.touch || replayMode) renderer.pan(event.clientX-pointer.lastX,event.clientY-pointer.lastY);
+      else selectionRect = {x:pointer.startX,y:pointer.startY,w:dx,h:dy};
+    }
+    pointer.lastX=event.clientX; pointer.lastY=event.clientY;
+  });
+  map.addEventListener('pointerup', event => {
+    if (!pointer || pointer.id !== event.pointerId) return;
+    const p=pointer; pointer=null;
+    if (!replayMode && !engine.winner) {
+      if (selectionRect) {
+        const box=selectionRect, x1=Math.min(box.x,box.x+box.w),x2=Math.max(box.x,box.x+box.w),y1=Math.min(box.y,box.y+box.h),y2=Math.max(box.y,box.y+box.h);
+        selectIds(engine.formations.filter(f=>{const s=renderer.worldToScreen(f.x,f.y);return f.team===0&&isViable(f)&&s.x>=x1&&s.x<=x2&&s.y>=y1&&s.y<=y2;}).map(f=>f.id),p.shift);
+      } else if (!p.moved && p.button === 0) {
+        const world=renderer.screenToWorld(event.clientX,event.clientY),hit=hitFormation(world.x,world.y);
+        if (hit && hit.team===0) selectIds([hit.id],p.shift);
+        else if (requireSelection()) {
+          if(!hit && engine.terrain && engine.terrain.sample(world.x,world.y).blocked){toast('Deep water blocks movement. Choose a bank or marked ford.');selectionRect=null;return;}
+          engine.order([...selected],world.x,world.y,hit && hit.team===1 ? hit.id : null);
+          toast(hit ? `Attack ${hit.name}.` : `Move ordered${running ? '.' : ' · starts when the battle runs.'}`);
+          updateUI();
+        }
+      }
+    }
+    selectionRect=null;
+    if (map.hasPointerCapture(event.pointerId)) map.releasePointerCapture(event.pointerId);
+  });
+  map.addEventListener('pointercancel', () => {pointer=null;selectionRect=null;});
+  map.addEventListener('contextmenu', event => event.preventDefault());
+  map.addEventListener('wheel', event => {event.preventDefault();renderer.zoomAt(event.clientX,event.clientY,Math.exp(-event.deltaY*.001));},{passive:false});
+
+  function centerZoom(factor) {const r=map.getBoundingClientRect();renderer.zoomAt(r.left+r.width/2,r.top+r.height/2,factor);}
+  function openDialog(id) {
+    running=false; replayPlaying=false; accumulator=0; updateUI(); $(id).showModal();
+  }
+  $('zoom-in').onclick=()=>centerZoom(1.25); $('zoom-out').onclick=()=>centerZoom(.8); $('reset-view').onclick=()=>renderer.resetView();
+  $('play-button').onclick=toggleRunning; $('restart').onclick=()=>{loadBattle(scenario.id);toast('Battlefield reset. Your next move is unwritten.');};
+  $('army-size').onchange=()=>{loadBattle(scenario.id);toast(`${format(+$('army-size').value)} soldiers ready. Battle reset.`);};
+  $('select-all').onclick=all; $('move-order').onclick=()=>command('move'); $('hold-order').onclick=()=>command('hold'); $('charge-order').onclick=()=>command('charge');
+  $('inspect-selection').onclick=()=>{
+    const f=engine.formations.filter(f=>selected.has(f.id)&&isViable(f));if(!f.length)return;
+    renderer.view.cx=f.reduce((n,v)=>n+v.x,0)/f.length;renderer.view.cy=f.reduce((n,v)=>n+v.y,0)/f.length;
+    renderer.view.zoom=f.length>1?3:(f[0].initial>1500?12:10);
+    toast('Close view. Scroll out or use Fit battlefield to return.');
+  };
+  $('formation-select').onchange=event=>{
+    if(!requireSelection())return;
+    const stance=event.target.value, ids=[...selected].filter(id=>stance!=='square'||engine.formations.find(f=>f.id===id)?.weapon==='musket');
+    if(!ids.length){toast('Square is available to musket infantry.');event.target.value='line';return;}
+    engine.setFormation(ids,stance);toast(`${stance[0].toUpperCase()+stance.slice(1)} formation ordered${stance==='square'?' for musket infantry':''}.`);updateUI();
+  };
+  document.querySelectorAll('[data-speed]').forEach(button=>button.onclick=()=>{speed=+button.dataset.speed;document.querySelectorAll('[data-speed]').forEach(b=>{b.classList.toggle('active',b===button);b.setAttribute('aria-pressed',String(b===button));});});
+  $('replay-button').onclick=openReplay; $('result-replay').onclick=openReplay; $('exit-replay').onclick=exitReplay;
+  $('result-reset').onclick=()=>loadBattle(scenario.id);
+  $('replay-play').onclick=()=>{if(replayCursor>=snapshots.length-1)setReplayTime(0);replayPlaying=!replayPlaying;updateUI();};
+  $('replay-scrub').oninput=event=>{setReplayTime(snapshots[+event.target.value].time);replayPlaying=false;updateUI();};
+  $('dismiss-hint').onclick=()=>$('map-hint').hidden=true;
+  $('open-sidebar').onclick=()=>$('open-sidebar').closest('main').querySelector('.sidebar').classList.add('open');
+  $('close-sidebar').onclick=()=>document.querySelector('.sidebar').classList.remove('open');
+  $('battle-tab').onclick=()=>map.focus(); document.querySelector('.brand').onclick=event=>{event.preventDefault();map.focus();};
+  ['guide-top','help-button'].forEach(id=>$(id).onclick=()=>openDialog('guide-dialog'));
+  document.querySelectorAll('.dialog-close').forEach(button=>button.onclick=()=>button.closest('dialog').close());
+  document.querySelectorAll('dialog').forEach(dialog=>dialog.addEventListener('click',event=>{if(event.target===dialog){const r=dialog.getBoundingClientRect();if(event.clientX<r.left||event.clientX>r.right||event.clientY<r.top||event.clientY>r.bottom)dialog.close();}}));
+  $('scenario-picker').onclick=()=>{
+    $('scenario-list').replaceChildren();
+    BATTLES.forEach(s=>{
+      const b=document.createElement('button');b.className='scenario-option'+(s.id===scenario.id?' active':'');
+      b.innerHTML=`<span class="scenario-art"><span>${s.motif}</span></span><span class="scenario-copy"><small>${s.era}</small><h3>${s.name}</h3><p>${s.summary}</p><span>${s.id===scenario.id?'Current battlefield':'Take command'} ↗</span></span>`;
+      b.onclick=()=>{loadBattle(s.id);$('scenario-dialog').close();document.querySelector('.sidebar').classList.remove('open');toast(`${s.name}. You command ${s.friendly}.`);};$('scenario-list').append(b);
+    });openDialog('scenario-dialog');
+  };
+  $('history-button').onclick=()=>{
+    $('notes-title').textContent=scenario.name;$('notes-date').textContent=`${scenario.date} · ${scenario.location}`;
+    $('notes-context').textContent=scenario.context;$('notes-tactic').textContent=scenario.tactic;
+    $('notes-source').href=scenario.source;$('notes-source').textContent=`${scenario.sourceName} ↗`;openDialog('history-dialog');
+  };
+  document.addEventListener('keydown',event=>{
+    if (document.querySelector('dialog[open]') || /INPUT|SELECT|TEXTAREA/.test(event.target.tagName) || event.ctrlKey || event.metaKey || event.altKey) return;
+    if (event.code==='Space' && event.target.tagName==='BUTTON') return;
+    const key=event.key.toLowerCase();
+    if(event.code==='Space'){event.preventDefault();toggleRunning();}
+    else if(key==='a'){event.preventDefault();all();}
+    else if(key==='h')command('hold');else if(key==='c')command('charge');
+    else if(key==='escape'){selected.clear();document.querySelector('.sidebar').classList.remove('open');updateUI();}
+    else if(key==='?' || key==='f1'){event.preventDefault();openDialog('guide-dialog');}
+    else if(key.startsWith('arrow')){event.preventDefault();renderer.pan(key==='arrowleft'?50:key==='arrowright'?-50:0,key==='arrowup'?50:key==='arrowdown'?-50:0);}
+    else if(key==='+' || key==='=')centerZoom(1.2);else if(key==='-')centerZoom(1/1.2);
+  });
+  // A background tab pauses, keeping commands and recorded time predictable.
+  document.addEventListener('visibilitychange',()=>{if(document.hidden){running=false;replayPlaying=false;accumulator=0;updateUI();}});
+
+  function frame(now) {
+    const dt=lastFrame?Math.min(.1,(now-lastFrame)/1000):0;lastFrame=now;
+    if(running && !engine.winner){
+      accumulator+=dt*speed;
+      while(accumulator>=1/30){engine.update(1/30);accumulator-=1/30;recordSnapshot();if(engine.winner){finishBattle();break;}}
+    }
+    if(replayMode && replayPlaying){setReplayTime(replayTime+dt*speed);if(replayCursor>=snapshots.length-1)replayPlaying=false;}
+    const formations=currentFormations();
+    renderer.render(formations,replayMode?new Set():selected,{time:replayMode?replayTime:engine.time,effects:currentEffects(),selectionRect,paused:!running&&!(replayMode&&replayPlaying)});
+    uiElapsed+=dt;fpsElapsed+=dt;frameCount++;
+    if(uiElapsed>.12){updateUI();uiElapsed=0;}
+    if(fpsElapsed>=1){$('fps').textContent=`${Math.round(frameCount/fpsElapsed)} FPS`;$('renderer-label').textContent=renderer.stats.renderer==='WebGL'?'GPU':'CANVAS';frameCount=0;fpsElapsed=0;}
+    requestAnimationFrame(frame);
+  }
+  loadBattle('cannae'); requestAnimationFrame(frame);
+})();
+
+</script>
+</body>
+</html>

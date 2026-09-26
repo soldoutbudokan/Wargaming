@@ -1,0 +1,4 @@
+node_modules/
+source/preview-*.png
+source/dist/
+.DS_Store
